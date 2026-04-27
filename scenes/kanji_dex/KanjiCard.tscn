@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b1fjwvh0opi1e"]
+
+[ext_resource type="Script" uid="uid://cc7uf0k1fjnk7" path="res://scenes/kanji_dex/KanjiCard.gd" id="1_s8xyr"]
+
+[node name="KanjiCard" type="PanelContainer" unique_id=989848740]
+custom_minimum_size = Vector2(160, 160)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s8xyr")
+
+[node name="CardVBox" type="VBoxContainer" parent="." unique_id=846526545]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="CharLabel" type="Label" parent="CardVBox" unique_id=1326751373]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "日"
+horizontal_alignment = 1
+
+[node name="MeaningLabel" type="Label" parent="CardVBox" unique_id=977714516]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "sun, day"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="KunLabel" type="Label" parent="CardVBox" unique_id=1080636857]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "kun : ひ、か"
+horizontal_alignment = 1
+
+[node name="OnLabel" type="Label" parent="CardVBox" unique_id=1108229067]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "on : ニチ、ジツ"
+horizontal_alignment = 1

@@ -1,0 +1,76 @@
+{
+  "kanjis": [
+	{
+	  "id": 1,
+	  "character": "日",
+	  "meanings": ["soleil", "jour"],
+	  "kun_yomi": ["ひ", "か"],
+	  "on_yomi": ["ニチ", "ジツ"],
+	  "unlock_at_player_level": 1
+	},
+	{
+	  "id": 2,
+	  "character": "月",
+	  "meanings": ["lune", "mois"],
+	  "kun_yomi": ["つき"],
+	  "on_yomi": ["ゲツ", "ガツ"],
+	  "unlock_at_player_level": 1
+	},
+	{
+	  "id": 3,
+	  "character": "火",
+	  "meanings": ["feu"],
+	  "kun_yomi": ["ひ"],
+	  "on_yomi": ["カ"],
+	  "unlock_at_player_level": 1
+	},
+	{
+	  "id": 4,
+	  "character": "水",
+	  "meanings": ["eau"],
+	  "kun_yomi": ["みず"],
+	  "on_yomi": ["スイ"],
+	  "unlock_at_player_level": 2
+	},
+	{
+	  "id": 5,
+	  "character": "木",
+	  "meanings": ["arbre", "bois"],
+	  "kun_yomi": ["き"],
+	  "on_yomi": ["モク", "ボク"],
+	  "unlock_at_player_level": 2
+	},
+	{
+	  "id": 6,
+	  "character": "金",
+	  "meanings": ["or", "argent", "métal"],
+	  "kun_yomi": ["かね", "かな"],
+	  "on_yomi": ["キン", "コン"],
+	  "unlock_at_player_level": 2
+	},
+	{
+	  "id": 7,
+	  "character": "土",
+	  "meanings": ["terre", "sol"],
+	  "kun_yomi": ["つち"],
+	  "on_yomi": ["ド", "ト"],
+	  "unlock_at_player_level": 3
+	},
+	{
+	  "id": 8,
+	  "character": "山",
+	  "meanings": ["montagne"],
+	  "kun_yomi": ["やま"],
+	  "on_yomi": ["サン"],
+	  "unlock_at_player_level": 3
+	},
+	{
+	  "id": 9,
+	  "character": "川",
+	  "meanings": ["rivière", "fleuve"],
+	  "kun_yomi": ["かわ"],
+	  "on_yomi": ["セン"],
+	  "unlock_at_player_level": 3
+	}
+  ]
+}

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dskp1k5rcji50"]
+
+[ext_resource type="Script" uid="uid://ct4tgrky4r1hk" path="res://scenes/shop/ItemRow.gd" id="1_8e72k"]
+
+[node name="ItemRow" type="PanelContainer" unique_id=163471575]
+custom_minimum_size = Vector2(0, 64)
+script = ExtResource("1_8e72k")
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=1130125814]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="InfoVBox" type="VBoxContainer" parent="HBox" unique_id=2006634259]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="NameLabel" type="Label" parent="HBox/InfoVBox" unique_id=575928964]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Nom de l'item"
+
+[node name="DescLabel" type="Label" parent="HBox/InfoVBox" unique_id=1546959224]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Description"
+
+[node name="CostLabel" type="Label" parent="HBox" unique_id=394517111]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "20 🪙
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionBtn" type="Button" parent="HBox" unique_id=397804570]
+custom_minimum_size = Vector2(110, 44)
+layout_mode = 2
+text = "Acheter"

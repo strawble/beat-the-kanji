@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cuav5jfiacdgy"]
+
+[ext_resource type="Script" uid="uid://ber10d3yf3m24" path="res://scenes/shop/Shop.gd" id="1_rktij"]
+
+[node name="Shop" type="Node2D" unique_id=1149446222]
+script = ExtResource("1_rktij")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1349097149]
+
+[node name="Root" type="MarginContainer" parent="UI" unique_id=1388500062]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="UI/Root" unique_id=580643643]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="HBoxContainer" parent="UI/Root/VBox" unique_id=206846531]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="UI/Root/VBox/TitleBar" unique_id=1575193798]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Boutique"
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="UI/Root/VBox/TitleBar" unique_id=2054633217]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "← Retour"
+
+[node name="CoinsLabel" type="Label" parent="UI/Root/VBox" unique_id=624461356]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "0 🪙"
+horizontal_alignment = 1
+
+[node name="TabBar" type="HBoxContainer" parent="UI/Root/VBox" unique_id=1596073363]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TabWeapon" type="Button" parent="UI/Root/VBox/TabBar" unique_id=202199588]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "⚔ Armes
+"
+
+[node name="TabArmor" type="Button" parent="UI/Root/VBox/TabBar" unique_id=163658663]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🛡 Armures"
+
+[node name="TabConsumable" type="Button" parent="UI/Root/VBox/TabBar" unique_id=597851011]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "🧪 Consommables"
+
+[node name="ItemList" type="ScrollContainer" parent="UI/Root/VBox" unique_id=738932634]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemGrid" type="VBoxContainer" parent="UI/Root/VBox/ItemList" unique_id=1268034673]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="EquippedPanel" type="PanelContainer" parent="UI/Root/VBox" unique_id=780100140]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="EquippedVBox" type="VBoxContainer" parent="UI/Root/VBox/EquippedPanel" unique_id=923670213]
+layout_mode = 2
+
+[node name="EquippedTitle" type="Label" parent="UI/Root/VBox/EquippedPanel/EquippedVBox" unique_id=2090602990]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Équipé actuellement"
+
+[node name="EquippedDetails" type="Label" parent="UI/Root/VBox/EquippedPanel/EquippedVBox" unique_id=32281517]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Arme : aucune   |   Armure : aucune"
+autowrap_mode = 2

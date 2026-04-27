@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://d0xdw0w5mbhpp"]
+
+[ext_resource type="Script" uid="uid://bos2apw5dgmtd" path="res://scenes/game_world/GameWorld.gd" id="1_p46a1"]
+
+[node name="GameWorld" type="Node2D" unique_id=980617413]
+script = ExtResource("1_p46a1")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=108888754]
+
+[node name="Root" type="MarginContainer" parent="UI" unique_id=709318638]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="UI/Root" unique_id=723089004]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StatsBar" type="PanelContainer" parent="UI/Root/VBox" unique_id=1842064813]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="StatsHBox" type="HBoxContainer" parent="UI/Root/VBox/StatsBar" unique_id=141476803]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LevelLabel" type="Label" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1606020133]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Niv. 1"
+vertical_alignment = 1
+
+[node name="XPBar" type="ProgressBar" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1755931054]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+show_percentage = false
+
+[node name="CoinsLabel" type="Label" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=123506481]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0 🪙"
+horizontal_alignment = 1
+
+[node name="DexButton" type="Button" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=49777251]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+text = "Dex 📖"
+
+[node name="ShopButton" type="Button" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1975146823]
+custom_minimum_size = Vector2(90, 30)
+layout_mode = 2
+text = "Shop 🛒"
+
+[node name="BossSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=1881662731]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BossVBox" type="VBoxContainer" parent="UI/Root/VBox/BossSection" unique_id=1018896178]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BossName" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=337938180]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Boss Name"
+horizontal_alignment = 1
+
+[node name="BossHPBar" type="ProgressBar" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=6362527]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+value = 100.0
+
+[node name="BossSprite" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=2143329949]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "日"
+horizontal_alignment = 1
+
+[node name="PlayerSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=709833799]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayerHBox" type="HBoxContainer" parent="UI/Root/VBox/PlayerSection" unique_id=826977563]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerHPLabel" type="Label" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=554658168]
+layout_mode = 2
+text = "HP : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHPBar" type="ProgressBar" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=766117454]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="QuestionSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=526025159]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestionVBox" type="VBoxContainer" parent="UI/Root/VBox/QuestionSection" unique_id=721603891]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="QuestionLabel" type="Label" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=992857844]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Question..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AnswerGrid" type="GridContainer" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=1810997316]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Btn0" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1323127028]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Answer X"
+
+[node name="Btn1" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=408130499]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Answer X"
+
+[node name="Btn2" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1264662124]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Answer X"
+
+[node name="Btn3" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=504097225]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Answer X"
+
+[node name="InfoLabel" type="Label" parent="UI/Root/VBox" unique_id=1477430672]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="LevelUpOverlay" type="PanelContainer" parent="UI" unique_id=1154948215]
+visible = false
+custom_minimum_size = Vector2(320, 140)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -70.0
+offset_right = 160.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelUpVBox" type="VBoxContainer" parent="UI/LevelUpOverlay" unique_id=745042436]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LevelUpTitle" type="Label" parent="UI/LevelUpOverlay/LevelUpVBox" unique_id=1982451332]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "LEVEL UP !"
+horizontal_alignment = 1
+
+[node name="LevelUpSub" type="Label" parent="UI/LevelUpOverlay/LevelUpVBox" unique_id=1445625899]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Niveau 2"
+horizontal_alignment = 1

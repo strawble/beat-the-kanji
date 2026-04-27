@@ -1,0 +1,68 @@
+{
+  "items": [
+	{
+	  "id": 1,
+	  "name": "Pinceau de bois",
+	  "description": "+5 dégâts par bonne réponse",
+	  "type": "weapon",
+	  "cost": 20,
+	  "effect": { "stat": "bonus_damage", "value": 5 }
+	},
+	{
+	  "id": 2,
+	  "name": "Pinceau de fer",
+	  "description": "+12 dégâts par bonne réponse",
+	  "type": "weapon",
+	  "cost": 60,
+	  "effect": { "stat": "bonus_damage", "value": 12 }
+	},
+	{
+	  "id": 3,
+	  "name": "Pinceau d'or",
+	  "description": "+22 dégâts par bonne réponse",
+	  "type": "weapon",
+	  "cost": 150,
+	  "effect": { "stat": "bonus_damage", "value": 22 }
+	},
+	{
+	  "id": 4,
+	  "name": "Kimono de coton",
+	  "description": "+20 PV maximum",
+	  "type": "armor",
+	  "cost": 25,
+	  "effect": { "stat": "bonus_hp", "value": 20 }
+	},
+	{
+	  "id": 5,
+	  "name": "Armure de samouraï",
+	  "description": "+50 PV maximum",
+	  "type": "armor",
+	  "cost": 80,
+	  "effect": { "stat": "bonus_hp", "value": 50 }
+	},
+	{
+	  "id": 6,
+	  "name": "Amulette de jade",
+	  "description": "Réduit les dégâts reçus de 3",
+	  "type": "armor",
+	  "cost": 110,
+	  "effect": { "stat": "damage_reduction", "value": 3 }
+	},
+	{
+	  "id": 7,
+	  "name": "Potion de clarté",
+	  "description": "Soigne 30 PV (usage unique)",
+	  "type": "consumable",
+	  "cost": 15,
+	  "effect": { "stat": "heal", "value": 30 }
+	},
+	{
+	  "id": 8,
+	  "name": "Thé du maître",
+	  "description": "Soigne tous les PV (usage unique)",
+	  "type": "consumable",
+	  "cost": 40,
+	  "effect": { "stat": "heal_full", "value": 0 }
+	}
+  ]
+}
