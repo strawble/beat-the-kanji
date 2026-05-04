@@ -22,6 +22,7 @@ KanjiDB="*uid://b5hysg0yvnrpp"
 BossGenerator="*uid://ceynrvej6tda0"
 ItemDB="*uid://btch2mytcn7bi"
 AudioManager="*uid://cmnsjqg6hh5de"
+SpellDB="*res://autoloads/SpellDB.gd"
 
 [display]
 
