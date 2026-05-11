@@ -1,70 +1,48 @@
 extends Node
 
-# Noms de boss générés aléatoirement (à enrichir plus tard)
 const BOSS_NAMES := [
 	"Oni Kanji", "Shogun des Mots", "Démon Syllabique",
 	"Spectre Idéographique", "Seigneur Hanzi", "Fantôme Radicalaire"
 ]
 
+const BOSS_KANJI_COUNT := 3
+
 func generate() -> Dictionary:
-	var level       := GameManager.data.player_level
-	var unlocked    := KanjiDB.get_unlocked(level)
-
-	if unlocked.is_empty():
-		push_error("BossGenerator: aucun kanji disponible")
-		return {}
-
-	var kanji_pool  := _pick_kanji_pool(unlocked)
-	var difficulty  := _compute_difficulty(kanji_pool)
+	var level_def : Dictionary = GameManager.current_level
+	var kanji_pool : Array     = _get_kanji_pool(level_def)
+	var player_level : int     = GameManager.data.player_level
+	var difficulty : float     = _compute_difficulty(kanji_pool)
 
 	return {
 		"name":        BOSS_NAMES[randi() % BOSS_NAMES.size()],
-		"max_hp":      _compute_hp(level, difficulty),
-		"damage":      _compute_damage(level, difficulty),
-		"xp_reward":   _compute_xp(level),
-		"coin_reward": _compute_coins(level),
-		"kanji_pool":  kanji_pool,   # Array de dicts kanji
+		"max_hp":      _compute_hp(player_level, difficulty),
+		"damage":      _compute_damage(player_level, difficulty),
+		"xp_reward":   _compute_xp(player_level),
+		"coin_reward": _compute_coins(player_level),
+		"kanji_pool":  kanji_pool,
 	}
 
-# ── Sélection du pool de kanjis ────────────────────────────────────────────────
-
-func _pick_kanji_pool(unlocked: Array) -> Array:
-	# Pondération inverse de la maîtrise : kanji peu maîtrisé = plus probable
-	var weighted: Array = []
-	for k in unlocked:
-		var mastery := GameManager.get_mastery(k["id"])
-		var weight  := int((1.0 - mastery) * 10) + 1   # 1..11
-		for _i in range(weight):
-			weighted.append(k)
-
-	weighted.shuffle()
-
-	# Dédoublonne en conservant l'ordre shufflé
-	var seen: Dictionary = {}
-	var pool: Array = []
-	for k in weighted:
-		if k["id"] not in seen:
-			seen[k["id"]] = true
+func _get_kanji_pool(level_def: Dictionary) -> Array:
+	# Utilise les kanjis fixés par le niveau
+	var ids : Array = level_def.get("kanji_ids", [])
+	var pool : Array = []
+	for id in ids:
+		var k : Dictionary = KanjiDB.get_by_id(id)
+		if not k.is_empty():
 			pool.append(k)
-		if pool.size() >= 5:
-			break
-
-	# Garantit au minimum 2 kanjis même si le pool est très petit
-	if pool.size() < min(2, unlocked.size()):
-		pool = unlocked.duplicate()
+	# Sécurité : si le niveau n'a pas de kanjis définis, fallback sur les débloqués
+	if pool.is_empty():
+		pool = KanjiDB.get_unlocked(GameManager.data.player_level)
 		pool.shuffle()
-		pool = pool.slice(0, 2)
-
+		pool = pool.slice(0, BOSS_KANJI_COUNT)
 	return pool
-
-# ── Formules de scaling ────────────────────────────────────────────────────────
 
 func _compute_difficulty(pool: Array) -> float:
 	if pool.is_empty(): return 0.5
-	var total := 0.0
+	var total : float = 0.0
 	for k in pool:
 		total += GameManager.get_mastery(k["id"])
-	var avg_mastery := total / pool.size()
+	var avg_mastery : float = total / pool.size()
 	return clamp(1.0 - avg_mastery, 0.1, 1.0)
 
 func _compute_hp(level: int, difficulty: float) -> int:

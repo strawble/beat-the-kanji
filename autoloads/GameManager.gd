@@ -5,6 +5,15 @@ const XP_PER_LEVEL := 100   # XP de base pour passer au niveau suivant
 
 var data: PlayerData
 
+# Niveau en cours (défini par MainMenu avant de lancer GameWorld)
+var current_level : Dictionary = {
+	"id": 1,
+	"title": "Niveau 1",
+	"subtitle": "Soleil · Lune · Feu",
+	"kanji_ids": [1, 2, 3],
+	"unlocked": true,
+}
+
 signal leveled_up(new_level: int)
 signal mastery_changed(kanji_id: int, new_value: float)
 
@@ -88,6 +97,9 @@ func is_discovered(kanji_id: int) -> bool:
 
 func go_to(scene_path: String) -> void:
 	get_tree().change_scene_to_file(scene_path)
+
+func set_current_level(level: Dictionary) -> void:
+	current_level = level
 	
 # ── Inventaire & Équipement ────────────────────────────────────────────────────
 

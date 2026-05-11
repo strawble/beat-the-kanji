@@ -95,8 +95,7 @@ theme_override_constants/separation = 10
 
 [node name="PlayerHPLabel" type="Label" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=554658168]
 layout_mode = 2
-text = "HP : "
-horizontal_alignment = 1
+text = "PV : "
 vertical_alignment = 1
 
 [node name="PlayerHPBar" type="ProgressBar" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=766117454]
@@ -132,25 +131,25 @@ columns = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+text = "Réponse X"
 
 [node name="Btn1" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=408130499]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+text = "Réponse X"
 
 [node name="Btn2" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1264662124]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+text = "Réponse X"
 
 [node name="Btn3" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=504097225]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+text = "Réponse X"
 
 [node name="InfoLabel" type="Label" parent="UI/Root/VBox" unique_id=1477430672]
 custom_minimum_size = Vector2(0, 30)

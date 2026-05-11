@@ -1,0 +1,144 @@
+{
+  "spells": [
+    {
+      "id": 1,
+      "name": "火曜日",
+      "reading": "Kayoubi",
+      "meaning": "Mardi (jour du feu)",
+      "kanji_ids": [3, 10, 1],
+      "element": "fire",
+      "damage_multiplier": 2.0,
+      "description": "Une flamme ardente consume l'ennemi !"
+    },
+    {
+      "id": 2,
+      "name": "水曜日",
+      "reading": "Suiyoubi",
+      "meaning": "Mercredi (jour de l'eau)",
+      "kanji_ids": [4, 10, 1],
+      "element": "water",
+      "damage_multiplier": 2.0,
+      "description": "Un torrent dévastateur balaie l'ennemi !"
+    },
+    {
+      "id": 3,
+      "name": "木曜日",
+      "reading": "Mokuyoubi",
+      "meaning": "Jeudi (jour du bois)",
+      "kanji_ids": [5, 10, 1],
+      "element": "wood",
+      "damage_multiplier": 2.0,
+      "description": "La forêt enserre et étouffe l'ennemi !"
+    },
+    {
+      "id": 4,
+      "name": "金曜日",
+      "reading": "Kin'youbi",
+      "meaning": "Vendredi (jour du métal)",
+      "kanji_ids": [6, 10, 1],
+      "element": "metal",
+      "damage_multiplier": 2.0,
+      "description": "Une lame tranchante transperce l'ennemi !"
+    },
+    {
+      "id": 5,
+      "name": "土曜日",
+      "reading": "Doyoubi",
+      "meaning": "Samedi (jour de la terre)",
+      "kanji_ids": [7, 10, 1],
+      "element": "earth",
+      "damage_multiplier": 2.0,
+      "description": "La terre tremble et engloutit l'ennemi !"
+    },
+    {
+      "id": 6,
+      "name": "日曜日",
+      "reading": "Nichiyoubi",
+      "meaning": "Dimanche (jour du soleil)",
+      "kanji_ids": [1, 10, 1],
+      "element": "light",
+      "damage_multiplier": 2.5,
+      "description": "La lumière solaire aveugle et brûle l'ennemi !"
+    },
+    {
+      "id": 7,
+      "name": "月曜日",
+      "reading": "Getsuyoubi",
+      "meaning": "Lundi (jour de la lune)",
+      "kanji_ids": [2, 10, 1],
+      "element": "shadow",
+      "damage_multiplier": 2.0,
+      "description": "L'ombre lunaire enveloppe et paralyse l'ennemi !"
+    },
+    {
+      "id": 8,
+      "name": "火山",
+      "reading": "Kazan",
+      "meaning": "Volcan",
+      "kanji_ids": [3, 8],
+      "element": "fire",
+      "damage_multiplier": 1.8,
+      "description": "Une éruption volcanique dévaste l'ennemi !"
+    },
+    {
+      "id": 9,
+      "name": "山川",
+      "reading": "Yamakawa",
+      "meaning": "Montagne et rivière",
+      "kanji_ids": [8, 9],
+      "element": "nature",
+      "damage_multiplier": 1.6,
+      "description": "La nature déchaînée s'abat sur l'ennemi !"
+    },
+    {
+      "id": 10,
+      "name": "川水",
+      "reading": "Kawamizu",
+      "meaning": "Rivière et eau",
+      "kanji_ids": [9, 4],
+      "element": "water",
+      "damage_multiplier": 1.5,
+      "description": "Les flots impétueux emportent l'ennemi !"
+    },
+    {
+      "id": 11,
+      "name": "金山",
+      "reading": "Kinzan",
+      "meaning": "Mine d'or",
+      "kanji_ids": [6, 8],
+      "element": "metal",
+      "damage_multiplier": 1.7,
+      "description": "Des éclats de métal transpercent l'ennemi !"
+    },
+    {
+      "id": 12,
+      "name": "日月",
+      "reading": "Nichigaku",
+      "meaning": "Soleil et lune",
+      "kanji_ids": [1, 2],
+      "element": "light",
+      "damage_multiplier": 1.8,
+      "description": "L'éclat du soleil et de la lune frappe l'ennemi !"
+    },
+    {
+      "id": 13,
+      "name": "水火",
+      "reading": "Suika",
+      "meaning": "Eau et feu",
+      "kanji_ids": [4, 3],
+      "element": "steam",
+      "damage_multiplier": 1.9,
+      "description": "Vapeur brûlante — l'eau et le feu fusionnent !"
+    },
+    {
+      "id": 14,
+      "name": "土木",
+      "reading": "Doboku",
+      "meaning": "Génie civil (terre et bois)",
+      "kanji_ids": [7, 5],
+      "element": "earth",
+      "damage_multiplier": 1.6,
+      "description": "La terre et le bois s'unissent pour écraser l'ennemi !"
+    }
+  ]
+}

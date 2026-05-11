@@ -15,8 +15,8 @@ func _populate_grid() -> void:
 	for child in grid.get_children():
 		child.queue_free()
 
-	var all_kanjis  = KanjiDB.get_all()
-	var discovered  = GameManager.data.discovered_kanji_ids
+	var all_kanjis  := KanjiDB.get_all()
+	var discovered  := GameManager.data.discovered_kanji_ids
 	var found_count := 0
 
 	for kanji in all_kanjis:
@@ -29,7 +29,7 @@ func _populate_grid() -> void:
 		# Appelle setup() après add_child pour que _ready() du card soit exécuté
 		card.call_deferred("setup", kanji, is_discovered)
 
-	stats_label.text = "%d / %d kanjis discovered" % [found_count, all_kanjis.size()]
+	stats_label.text = "%d / %d kanjis découverts" % [found_count, all_kanjis.size()]
 
 func _on_back_pressed() -> void:
 	GameManager.go_to("res://scenes/game_world/GameWorld.tscn")
