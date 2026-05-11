@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0xdw0w5mbhpp"]
 
 [ext_resource type="Script" uid="uid://bos2apw5dgmtd" path="res://scenes/game_world/GameWorld.gd" id="1_p46a1"]
+[ext_resource type="FontFile" uid="uid://l7il66qmkqm5" path="res://fonts/Aiharahudemojikaisho_free305.ttf" id="2_qfria"]
 
 [node name="GameWorld" type="Node2D" unique_id=980617413]
 script = ExtResource("1_p46a1")
@@ -81,6 +82,7 @@ value = 100.0
 [node name="BossSprite" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=2143329949]
 custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qfria")
 theme_override_font_sizes/font_size = 80
 text = "日"
 horizontal_alignment = 1

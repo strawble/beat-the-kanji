@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" format=3 uid="uid://1hnl5r2ekvbb"]
+
+[ext_resource type="FontFile" uid="uid://l7il66qmkqm5" path="res://fonts/Aiharahudemojikaisho_free305.ttf" id="1_notu3"]
+
+[resource]
+fallbacks = Array[Font]([null])
+base_font = ExtResource("1_notu3")

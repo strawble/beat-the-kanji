@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://grenvr1wetm6"]
+
+[ext_resource type="FontVariation" uid="uid://1hnl5r2ekvbb" path="res://fonts/font_composite.tres" id="1_rjgu6"]
+
+[resource]
+default_font = ExtResource("1_rjgu6")
+default_font_size = 16
