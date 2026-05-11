@@ -37,12 +37,12 @@ vertical_alignment = 1
 [node name="BackButton" type="Button" parent="UI/Root/VBox/TitleBar" unique_id=302671803]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-text = "← Retour"
+text = "← Back"
 
 [node name="StatsLabel" type="Label" parent="UI/Root/VBox" unique_id=81846399]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "0 / 9 kanjis découverts"
+text = "0 / 9 discovered kanjis"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Root/VBox" unique_id=685065757]

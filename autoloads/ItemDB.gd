@@ -8,12 +8,12 @@ func _ready() -> void:
 func _load_data() -> void:
 	var file = FileAccess.open("res://data/items_data.json", FileAccess.READ)
 	if not file:
-		push_error("ItemDB: impossible d'ouvrir items_data.json")
+		push_error("ItemDB: cannot open items_data.json")
 		return
 	var json = JSON.new()
 	json.parse(file.get_as_text())
 	_items = json.data["items"]
-	print("ItemDB: %d items chargés." % _items.size())
+	print("ItemDB: %d items loaded." % _items.size())
 
 func get_all() -> Array:
 	return _items

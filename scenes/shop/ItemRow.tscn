@@ -19,7 +19,7 @@ theme_override_constants/separation = 4
 [node name="NameLabel" type="Label" parent="HBox/InfoVBox" unique_id=575928964]
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
-text = "Nom de l'item"
+text = "Item's name"
 
 [node name="DescLabel" type="Label" parent="HBox/InfoVBox" unique_id=1546959224]
 layout_mode = 2
@@ -38,4 +38,4 @@ vertical_alignment = 1
 [node name="ActionBtn" type="Button" parent="HBox" unique_id=397804570]
 custom_minimum_size = Vector2(110, 44)
 layout_mode = 2
-text = "Acheter"
+text = "Buy"

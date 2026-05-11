@@ -4,24 +4,21 @@ const VICTORY_SCENE := preload("res://scenes/victory/VictoryScreen.tscn")
 
 # ── Constantes ─────────────────────────────────────────────────────────────────
 const QUESTION_TIMEOUT  : float = 10.0
-const PARADE_TIMEOUT    : float = 15.0   # temps pour parer l'attaque du boss
+const PARADE_TIMEOUT    : float = 15.0
 const CORRECT_TO_MASTER : int   = 3
 const BASE_PLAYER_HP    : int   = 100
-const PHASE1_BOSS_HP    : int   = 9      # 3 kanjis × 3 étoiles
+const PHASE1_BOSS_HP    : int   = 9
 
-# Dégâts Phase 1 : mauvaise réponse = 1/9 des PV joueur
 const PHASE1_PLAYER_HP_FRACTION : int = 9
 
-# Dégâts Phase 2
-const DRAW_BASE_DMG        : int = 25   # tracé réussi
-const SPELL_DMG_2_KANJIS   : int = 4    # sort 2 kanjis
-const SPELL_DMG_3_KANJIS   : int = 5    # sort 3 kanjis
-const BOSS_ATTACK_DMG      : int = 20   # attaque brute du boss (avant parade)
+const DRAW_BASE_DMG        : int = 25
+const SPELL_DMG_2_KANJIS   : int = 4
+const SPELL_DMG_3_KANJIS   : int = 5
+const BOSS_ATTACK_DMG      : int = 20
 
 enum CombatPhase { PHASE1_LEARNING, PHASE2_COMBAT }
 enum Phase2Mode  { CHOOSING, CASTING_SPELL, PARRYING }
 
-# ── Nœuds existants ────────────────────────────────────────────────────────────
 @onready var boss_name_label  : Label         = $UI/Root/VBox/BossSection/BossVBox/BossName
 @onready var boss_hp_bar      : ProgressBar   = $UI/Root/VBox/BossSection/BossVBox/BossHPBar
 @onready var boss_sprite      : Label         = $UI/Root/VBox/BossSection/BossVBox/BossSprite
@@ -41,18 +38,16 @@ enum Phase2Mode  { CHOOSING, CASTING_SPELL, PARRYING }
 @onready var levelup_sub      : Label          = $UI/LevelUpOverlay/LevelUpVBox/LevelUpSub
 @onready var question_section : Control        = $UI/Root/VBox/QuestionSection
 
-# ── Nœuds créés dynamiquement ─────────────────────────────────────────────────
 var timer_bar          : ProgressBar    = null
 var phase_label        : Label          = null
 var kanji_status_box   : HBoxContainer  = null
-var phase2_boss_hp_bar : ProgressBar    = null   # barre de vie Phase 2, dans BossVBox
-var phase2_boss_hp_row : HBoxContainer  = null   # conteneur (pour show/hide)
+var phase2_boss_hp_bar : ProgressBar    = null
+var phase2_boss_hp_row : HBoxContainer  = null
 var phase2_panel       : PanelContainer = null
 var spell_btn          : Button         = null
 var draw_btn           : Button         = null
 var confirm_overlay    : PanelContainer = null
 
-# ── État ───────────────────────────────────────────────────────────────────────
 var boss            : Dictionary = {}
 var boss_hp_phase1  : int = 0
 var boss_hp_phase2  : int = 0
@@ -69,15 +64,10 @@ var battle_correct_counts        : Dictionary = {}
 var drawing_attempt_counts       : Dictionary = {}
 var _newly_discovered_this_fight : Array[int] = []
 
-# Parade : dégâts boss en attente pendant la phase de parade
 var _pending_boss_dmg : int = 0
 
 var _timer_value  : float = QUESTION_TIMEOUT
 var _timer_active : bool  = false
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# ── INIT ───────────────────────────────────────════════════════════════════════
-# ═══════════════════════════════════════════════════════════════════════════════
 
 func _ready() -> void:
 	_build_dynamic_ui()
@@ -100,13 +90,11 @@ func _build_dynamic_ui() -> void:
 	var vbox : VBoxContainer = $UI/Root/VBox
 	var boss_section : Control = $UI/Root/VBox/BossSection
 
-	# ── Barre de vie Phase 2 — insérée dans BossVBox juste sous BossName ──
 	phase2_boss_hp_row = HBoxContainer.new()
 	phase2_boss_hp_row.visible = false
 	phase2_boss_hp_row.add_theme_constant_override("separation", 6)
-	# Insère après BossName (index 0), avant BossHPBar (index 1)
 	boss_vbox.add_child(phase2_boss_hp_row)
-	boss_vbox.move_child(phase2_boss_hp_row, 1)   # 0=BossName, 1=ici, 2=BossHPBar, 3=BossSprite
+	boss_vbox.move_child(phase2_boss_hp_row, 1)
 
 	var p2lbl := Label.new()
 	p2lbl.text = "⚔️ Phase 2"
@@ -120,7 +108,6 @@ func _build_dynamic_ui() -> void:
 	phase2_boss_hp_bar.modulate              = Color(1.0, 0.45, 0.1)
 	phase2_boss_hp_row.add_child(phase2_boss_hp_bar)
 
-	# ── Timer ──
 	timer_bar = ProgressBar.new()
 	timer_bar.custom_minimum_size = Vector2(0, 14)
 	timer_bar.max_value           = QUESTION_TIMEOUT
@@ -129,21 +116,18 @@ func _build_dynamic_ui() -> void:
 	vbox.add_child(timer_bar)
 	vbox.move_child(timer_bar, question_section.get_index())
 
-	# ── Label de phase ──
 	phase_label = Label.new()
 	phase_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	phase_label.add_theme_font_size_override("font_size", 14)
 	vbox.add_child(phase_label)
 	vbox.move_child(phase_label, 1)
 
-	# ── Étoiles de maîtrise ──
 	kanji_status_box = HBoxContainer.new()
 	kanji_status_box.alignment = BoxContainer.ALIGNMENT_CENTER
 	kanji_status_box.add_theme_constant_override("separation", 20)
 	vbox.add_child(kanji_status_box)
 	vbox.move_child(kanji_status_box, boss_section.get_index() + 1)
 
-	# ── Panel Phase 2 ──
 	phase2_panel = PanelContainer.new()
 	phase2_panel.visible = false
 	vbox.add_child(phase2_panel)
@@ -153,7 +137,7 @@ func _build_dynamic_ui() -> void:
 	phase2_panel.add_child(p2v)
 
 	var p2title := Label.new()
-	p2title.text = "⚔️  Choisissez votre attaque !"
+	p2title.text = "⚔️  Choose your attack!"
 	p2title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	p2title.add_theme_font_size_override("font_size", 16)
 	p2v.add_child(p2title)
@@ -163,28 +147,26 @@ func _build_dynamic_ui() -> void:
 	p2v.add_child(p2h)
 
 	spell_btn = Button.new()
-	spell_btn.text = "🔮  Sort"
+	spell_btn.text = "🔮  Spell"
 	spell_btn.custom_minimum_size   = Vector2(0, 60)
 	spell_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	spell_btn.pressed.connect(_on_spell_btn_pressed)
 	p2h.add_child(spell_btn)
 
 	draw_btn = Button.new()
-	draw_btn.text = "✍️  Tracer (attaque)"
+	draw_btn.text = "✍️  Draw (attack)"
 	draw_btn.custom_minimum_size   = Vector2(0, 60)
 	draw_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	draw_btn.pressed.connect(_on_draw_attack_pressed)
 	p2h.add_child(draw_btn)
 
-	# ── Bouton Abandonner ──
 	var quit_btn := Button.new()
-	quit_btn.text = "🏠  Abandonner"
+	quit_btn.text = "🏠  Quit"
 	quit_btn.custom_minimum_size   = Vector2(0, 36)
 	quit_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	quit_btn.pressed.connect(_on_quit_pressed)
 	vbox.add_child(quit_btn)
 
-	# ── Dialogue confirmation ──
 	confirm_overlay = PanelContainer.new()
 	confirm_overlay.set_anchors_preset(Control.PRESET_CENTER)
 	confirm_overlay.visible = false
@@ -195,7 +177,7 @@ func _build_dynamic_ui() -> void:
 	confirm_overlay.add_child(cv)
 
 	var clbl := Label.new()
-	clbl.text = "Abandonner le niveau ?"
+	clbl.text = "Quit the level?"
 	clbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	clbl.add_theme_font_size_override("font_size", 18)
 	cv.add_child(clbl)
@@ -205,13 +187,13 @@ func _build_dynamic_ui() -> void:
 	cv.add_child(ch)
 
 	var yes_btn := Button.new()
-	yes_btn.text = "✅  Oui, quitter"
+	yes_btn.text = "✅  Yes, quit"
 	yes_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	yes_btn.pressed.connect(_confirm_quit)
 	ch.add_child(yes_btn)
 
 	var no_btn := Button.new()
-	no_btn.text = "❌  Continuer"
+	no_btn.text = "❌  Continue"
 	no_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	no_btn.pressed.connect(func(): confirm_overlay.visible = false)
 	ch.add_child(no_btn)
@@ -224,10 +206,9 @@ func _confirm_quit() -> void:
 	confirm_overlay.visible = false
 	GameManager.go_to("res://scenes/main_menu/main_menu.tscn")
 
-# ── Stats bar ──────────────────────────────────────────────────────────────────
 func _refresh_stats_bar() -> void:
 	var d : PlayerData = GameManager.data
-	level_label.text = "Niv. %d" % d.player_level
+	level_label.text = "Lvl. %d" % d.player_level
 	coins_label.text = "%d 🪙" % d.coins
 	xp_bar.max_value = GameManager.xp_for_next_level()
 	xp_bar.value     = d.xp
@@ -245,16 +226,12 @@ func _on_mastery_changed(_id: int, _v: float) -> void:
 func _show_levelup_overlay(new_level: int) -> void:
 	var prev : int = KanjiDB.get_unlocked(new_level - 1).size()
 	var curr : int = KanjiDB.get_unlocked(new_level).size()
-	levelup_title.text = "LEVEL UP !"
-	levelup_sub.text   = "Niveau %d%s" % [new_level,
-		("  —  %d nouveau(x) kanji(s) !" % (curr - prev)) if curr > prev else ""]
+	levelup_title.text = "LEVEL UP!"
+	levelup_sub.text   = "Level %d%s" % [new_level,
+		("  —  %d new kanji(s)!" % (curr - prev)) if curr > prev else ""]
 	levelup_overlay.visible = true
 	await get_tree().create_timer(2.5).timeout
 	levelup_overlay.visible = false
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# ── COMBAT ─────────────────────────────────────────────────════════════════════
-# ═══════════════════════════════════════════════════════════════════════════════
 
 func start_combat() -> void:
 	_newly_discovered_this_fight.clear()
@@ -288,13 +265,9 @@ func start_combat() -> void:
 	_refresh_stats_bar()
 	_enter_phase1()
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# ── PHASE 1 ────────────────────────────────────────────════════════════════════
-# ═══════════════════════════════════════════════════════════════════════════════
-
 func _enter_phase1() -> void:
 	current_phase = CombatPhase.PHASE1_LEARNING
-	phase_label.text         = "⚡ Phase 1 — Apprentissage"
+	phase_label.text         = "⚡ Phase 1 — Learning"
 	phase2_panel.visible     = false
 	question_section.visible = true
 	timer_bar.visible        = true
@@ -382,12 +355,11 @@ func _on_timeout() -> void:
 	if not awaiting_answer: return
 	awaiting_answer = false
 	_disable_answer_buttons()
-	# Phase 1 : timeout = même pénalité que mauvaise réponse
 	var dmg : int = player_max_hp / PHASE1_PLAYER_HP_FRACTION
 	player_hp = max(0, player_hp - dmg)
 	player_hp_bar.value = player_hp
 	_update_player_label()
-	_show_info("⏱  Temps écoulé !  Réponse : %s   (−%d PV)" % [current_question["correct"], dmg], false)
+	_show_info("⏱  Time's up!  Answer: %s   (−%d HP)" % [current_question["correct"], dmg], false)
 	await get_tree().create_timer(1.8).timeout
 	if player_hp <= 0: _on_defeat()
 	else:              _next_question()
@@ -424,16 +396,15 @@ func _handle_phase1_answer(idx: int) -> void:
 		boss_current_hp   = max(0, boss_current_hp - 1)
 		boss_hp_bar.value = boss_current_hp
 		if count >= CORRECT_TO_MASTER:
-			_show_info("✓  %s maîtrisé ! ★★★" % char_str, true)
+			_show_info("✓  %s mastered! ★★★" % char_str, true)
 		else:
-			_show_info("✓  Bonne réponse !  (%d/3 ★  %s)" % [count, char_str], true)
+			_show_info("✓  Correct!  (%d/3 ★  %s)" % [count, char_str], true)
 	else:
-		# Mauvaise réponse = −1/9 des PV joueur
 		var dmg : int = player_max_hp / PHASE1_PLAYER_HP_FRACTION
 		player_hp = max(0, player_hp - dmg)
 		player_hp_bar.value = player_hp
 		_update_player_label()
-		_show_info("✗  Faux — la réponse était : %s   (−%d PV)" % [correct, dmg], false)
+		_show_info("✗  Wrong — the answer was: %s   (−%d HP)" % [correct, dmg], false)
 	_rebuild_kanji_status()
 	await get_tree().create_timer(1.5).timeout
 	if player_hp <= 0:
@@ -444,10 +415,6 @@ func _handle_phase1_answer(idx: int) -> void:
 		return
 	_next_question()
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# ── PHASE 2 ────────────────────────────────────────────═══════════════════════
-# ═══════════════════════════════════════════════════════════════════════════════
-
 func _enter_phase2() -> void:
 	current_phase = CombatPhase.PHASE2_COMBAT
 	_timer_active = false
@@ -456,22 +423,19 @@ func _enter_phase2() -> void:
 	phase2_panel.visible     = true
 	phase2_mode              = Phase2Mode.CHOOSING
 	boss_sprite.text         = "👹"
-	# Barre Phase 1 à 0 (vaincue), barre Phase 2 à plein
 	boss_hp_bar.value            = 0
 	boss_current_hp              = boss_hp_phase2
 	phase2_boss_hp_bar.max_value = boss_hp_phase2
 	phase2_boss_hp_bar.value     = boss_hp_phase2
 	phase2_boss_hp_row.visible   = true
-	phase_label.text = "⚔️  Phase 2 — Combat Final !"
-	_show_info("✨  Kanjis maîtrisés — passez à l'attaque !", true)
+	phase_label.text = "⚔️  Phase 2 — Final Fight!"
+	_show_info("✨  Kanji mastered — go on the attack!", true)
 	_refresh_phase2_ui()
 
 func _refresh_phase2_ui() -> void:
 	var available : Array = SpellDB.get_available_spells()
 	spell_btn.disabled = available.is_empty()
-	spell_btn.text     = "🔮  Sort (%d dispo)" % available.size()
-
-# ── Attaque : Sort ─────────────────────────────────────────────────────────────
+	spell_btn.text     = "🔮  Spell (%d available)" % available.size()
 
 func _on_spell_btn_pressed() -> void:
 	phase2_mode = Phase2Mode.CASTING_SPELL
@@ -480,7 +444,7 @@ func _on_spell_btn_pressed() -> void:
 func _show_spell_selection_ui() -> void:
 	question_section.visible = true
 	phase2_panel.visible     = false
-	question_label.text      = "Choisissez un sort :"
+	question_label.text      = "Choose a spell:"
 	var available : Array = SpellDB.get_available_spells()
 	var buttons   : Array = answer_grid.get_children()
 	for i in range(buttons.size()):
@@ -488,7 +452,7 @@ func _show_spell_selection_ui() -> void:
 		if i < available.size():
 			var sp  : Dictionary = available[i]
 			var dmg : int = _compute_spell_damage(sp)
-			btn.text     = "%s  (%d kanjis · %d dégâts)" % [sp["name"], (sp["kanji_ids"] as Array).size(), dmg]
+			btn.text     = "%s  (%d kanjis · %d damage)" % [sp["name"], (sp["kanji_ids"] as Array).size(), dmg]
 			btn.disabled = false
 			btn.modulate = Color.WHITE
 		else:
@@ -511,30 +475,23 @@ func _handle_phase2_spell_answer(idx: int) -> void:
 	phase2_boss_hp_bar.value = boss_current_hp
 	question_section.visible = false
 	phase2_panel.visible     = true
-	_show_info("🔮  %s — %s  (−%d PV !)" % [spell["name"], spell["description"], dmg], true)
+	_show_info("🔮  %s — %s  (−%d HP!)" % [spell["name"], spell["description"], dmg], true)
 	await get_tree().create_timer(1.5).timeout
 	if boss_current_hp <= 0:
 		_on_victory()
 		return
-	# Après l'attaque du joueur → contre-attaque du boss → parade
 	_boss_attacks_then_parade()
-
-# ── Attaque : Tracé offensif ───────────────────────────────────────────────────
 
 func _on_draw_attack_pressed() -> void:
 	phase2_mode = Phase2Mode.CHOOSING
-	_launch_drawing_scene(false)   # false = mode offensif
-
-# ── Parade (après contre-attaque boss) ────────────────────────────────────────
+	_launch_drawing_scene(false)
 
 func _boss_attacks_then_parade() -> void:
-	# Le boss annonce son attaque
 	_pending_boss_dmg = BOSS_ATTACK_DMG
 	var kanji_for_parade : Dictionary = boss["kanji_pool"][randi() % boss["kanji_pool"].size()]
-	_show_info("👹  Attaque du boss ! Tracez %s pour parer ! (15s)" % kanji_for_parade["character"], false)
+	_show_info("👹  Boss attack! Draw %s to parry! (15s)" % kanji_for_parade["character"], false)
 	phase2_panel.visible = false
 	await get_tree().create_timer(1.0).timeout
-	# Lance le tracé en mode parade
 	_launch_drawing_scene(true, kanji_for_parade)
 
 func _launch_drawing_scene(is_parade: bool, forced_kanji: Dictionary = {}) -> void:
@@ -547,13 +504,12 @@ func _launch_drawing_scene(is_parade: bool, forced_kanji: Dictionary = {}) -> vo
 	var kid         : int = int(kanji["id"])
 	var attempt_num : int = drawing_attempt_counts.get(kid, 0) + 1
 	if not is_parade:
-		drawing_attempt_counts[kid] = attempt_num   # incrémente seulement en offensif
+		drawing_attempt_counts[kid] = attempt_num
 
 	var drawing_scene := load("res://scenes/kanji_drawing/KanjiDrawing.tscn").instantiate() as Control
 	drawing_scene.set_anchors_preset(Control.PRESET_FULL_RECT)
 	drawing_scene.name = "KanjiDrawingOverlay"
 
-	# En parade : timer 15s et label spécifique
 	if is_parade:
 		drawing_scene.set_meta("parade_mode", true)
 		drawing_scene.set_meta("parade_timeout", PARADE_TIMEOUT)
@@ -571,17 +527,15 @@ func _launch_drawing_scene(is_parade: bool, forced_kanji: Dictionary = {}) -> vo
 		CONNECT_ONE_SHOT
 	)
 
-# Résoudre une attaque de tracé (mode offensif)
 func _resolve_attack(success: bool, coverage: float) -> void:
 	phase2_panel.visible = true
 	if success:
 		var dmg : int = _compute_drawing_damage(coverage)
 		boss_current_hp = max(0, boss_current_hp - dmg)
 		phase2_boss_hp_bar.value = boss_current_hp
-		_show_info("⚔️  Attaque du samouraï !  (−%d PV !)" % dmg, true)
+		_show_info("⚔️  Samurai attack!  (−%d HP!)" % dmg, true)
 	else:
-		# Tracé raté : attaque manquée + le boss contre-attaque
-		_show_info("✗  Tracé raté — attaque manquée !", false)
+		_show_info("✗  Failed draw — attack missed!", false)
 		await get_tree().create_timer(0.8).timeout
 		_boss_attacks_then_parade()
 		return
@@ -589,24 +543,19 @@ func _resolve_attack(success: bool, coverage: float) -> void:
 	if boss_current_hp <= 0:
 		_on_victory()
 		return
-	# Tracé réussi → boss contre-attaque quand même
 	_boss_attacks_then_parade()
 
-# Résoudre la parade
 func _resolve_parade(coverage: float) -> void:
-	# coverage ∈ [0.0, 1.0] : proportion de la zone couverte
-	# 0.0 = aucune parade → dégâts pleins
-	# 1.0 = parade parfaite → 0 dégâts
 	var dmg_taken : int = int(_pending_boss_dmg * (1.0 - coverage))
 	_pending_boss_dmg = 0
 	phase2_panel.visible = true
 
 	if dmg_taken == 0:
-		_show_info("🛡️  Parade parfaite ! Aucun dégât !", true)
+		_show_info("🛡️  Perfect parry! No damage!", true)
 	elif coverage > 0.5:
-		_show_info("🛡️  Parade partielle — (−%d PV)" % dmg_taken, false)
+		_show_info("🛡️  Partial parry — (−%d HP)" % dmg_taken, false)
 	else:
-		_show_info("💥  Parade ratée — (−%d PV)" % dmg_taken, false)
+		_show_info("💥  Parry failed — (−%d HP)" % dmg_taken, false)
 
 	player_hp = max(0, player_hp - dmg_taken)
 	player_hp_bar.value = player_hp
@@ -616,11 +565,8 @@ func _resolve_parade(coverage: float) -> void:
 	if player_hp <= 0:
 		_on_defeat()
 		return
-	# Retour au choix d'action
 	phase2_mode = Phase2Mode.CHOOSING
 	_refresh_phase2_ui()
-
-# ── Calculs de dégâts ─────────────────────────────────────────────────────────
 
 func _compute_spell_damage(spell: Dictionary) -> int:
 	var nb : int = (spell["kanji_ids"] as Array).size()
@@ -628,12 +574,7 @@ func _compute_spell_damage(spell: Dictionary) -> int:
 	return base + GameManager.get_bonus_damage()
 
 func _compute_drawing_damage(coverage: float) -> int:
-	# Proportionnel à la qualité du tracé
 	return int(DRAW_BASE_DMG * coverage) + GameManager.get_bonus_damage()
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# ── VICTOIRE / DÉFAITE ─────────────────────────────────────────════════════════
-# ═══════════════════════════════════════════════════════════════════════════════
 
 func _on_victory() -> void:
 	_timer_active = false
@@ -659,16 +600,14 @@ func _on_defeat() -> void:
 	var penalty : int = min(GameManager.data.coins, 5)
 	if penalty > 0: GameManager.spend_coins(penalty)
 	_refresh_stats_bar()
-	_show_info("✖  Défaite !  −%d pièces…" % penalty, false)
-	question_label.text      = "Retour au menu dans 3 secondes…"
+	_show_info("✖  Defeat!  −%d coins…" % penalty, false)
+	question_label.text      = "Returning to menu in 3 seconds…"
 	boss_sprite.text         = "✖"
 	phase2_panel.visible     = false
 	question_section.visible = true
 	_disable_answer_buttons()
 	await get_tree().create_timer(3.0).timeout
 	GameManager.go_to("res://scenes/main_menu/main_menu.tscn")
-
-# ── Helpers ────────────────────────────────────────────────────────────────────
 
 func _disable_answer_buttons() -> void:
 	for btn in answer_grid.get_children():
@@ -679,7 +618,7 @@ func _show_info(msg: String, positive: bool) -> void:
 	info_label.modulate = Color(0.3, 1.0, 0.4) if positive else Color(1.0, 0.3, 0.3)
 
 func _update_player_label() -> void:
-	player_hp_label.text = "PV : %d / %d" % [player_hp, _get_player_max_hp()]
+	player_hp_label.text = "HP: %d / %d" % [player_hp, _get_player_max_hp()]
 
 func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey and (event as InputEventKey).pressed): return

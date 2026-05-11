@@ -1,15 +1,15 @@
 extends Node
 
-const SAVE_PATH   := "user://save.tres"
-const XP_PER_LEVEL := 100   # XP de base pour passer au niveau suivant
+const SAVE_PATH    := "user://save.tres"
+const XP_PER_LEVEL := 100   # Base XP required to reach the next level
 
 var data: PlayerData
 
-# Niveau en cours (défini par MainMenu avant de lancer GameWorld)
+# Current level (set by MainMenu before launching GameWorld)
 var current_level : Dictionary = {
 	"id": 1,
-	"title": "Niveau 1",
-	"subtitle": "Soleil · Lune · Feu",
+	"title": "Level 1",
+	"subtitle": "Sun · Moon · Fire",
 	"kanji_ids": [1, 2, 3],
 	"unlocked": true,
 }
@@ -27,18 +27,18 @@ func load_game() -> void:
 		data = load(SAVE_PATH) as PlayerData
 	if data == null:
 		data = PlayerData.new()
-		print("GameManager: nouvelle partie.")
+		print("GameManager: new game.")
 	else:
-		print("GameManager: sauvegarde chargée — niveau %d" % data.player_level)
+		print("GameManager: save loaded — level %d" % data.player_level)
 
 func save_game() -> void:
 	ResourceSaver.save(data, SAVE_PATH)
 
-func reset_save() -> void:    # Utile pendant le dev
+func reset_save() -> void:    # Useful during development
 	data = PlayerData.new()
 	save_game()
 
-# ── XP & Niveaux ───────────────────────────────────────────────────────────────
+# ── XP & Levels ───────────────────────────────────────────────────────────────
 
 func add_xp(amount: int) -> void:
 	data.xp += amount
@@ -52,13 +52,13 @@ func _check_level_up() -> void:
 		data.player_level += 1
 		needed = xp_for_next_level()
 		emit_signal("leveled_up", data.player_level)
-		print("LEVEL UP → niveau %d" % data.player_level)
+		print("LEVEL UP → level %d" % data.player_level)
 
 func xp_for_next_level() -> int:
-	# Courbe légèrement progressive : 100, 120, 140, ...
+	# Slightly progressive curve: 100, 120, 140, ...
 	return XP_PER_LEVEL + (data.player_level - 1) * 20
 
-# ── Pièces ─────────────────────────────────────────────────────────────────────
+# ── Coins ──────────────────────────────────────────────────────────────────────
 
 func add_coins(amount: int) -> void:
 	data.coins += amount
@@ -71,7 +71,7 @@ func spend_coins(amount: int) -> bool:
 	save_game()
 	return true
 
-# ── Maîtrise des kanjis ────────────────────────────────────────────────────────
+# ── Kanji mastery ──────────────────────────────────────────────────────────────
 
 func get_mastery(kanji_id: int) -> float:
 	return data.kanji_mastery.get(kanji_id, 0.0)
@@ -83,7 +83,7 @@ func update_mastery(kanji_id: int, correct: bool) -> void:
 	emit_signal("mastery_changed", kanji_id, m)
 	save_game()
 
-# ── Découverte ─────────────────────────────────────────────────────────────────
+# ── Discovery ──────────────────────────────────────────────────────────────────
 
 func discover_kanji(kanji_id: int) -> void:
 	if kanji_id not in data.discovered_kanji_ids:
@@ -100,8 +100,8 @@ func go_to(scene_path: String) -> void:
 
 func set_current_level(level: Dictionary) -> void:
 	current_level = level
-	
-# ── Inventaire & Équipement ────────────────────────────────────────────────────
+
+# ── Inventory & Equipment ──────────────────────────────────────────────────────
 
 func buy_item(item_id: int) -> bool:
 	var item := ItemDB.get_by_id(item_id)
@@ -133,7 +133,7 @@ func use_consumable(item_id: int) -> bool:
 func has_item(item_id: int) -> bool:
 	return item_id in data.inventory
 
-# ── Stats effectives (base + équipement) ──────────────────────────────────────
+# ── Effective stats (base + equipment) ────────────────────────────────────────
 
 func get_bonus_damage() -> int:
 	if data.equipped_weapon == -1:

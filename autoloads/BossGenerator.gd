@@ -1,10 +1,9 @@
 extends Node
 
 const BOSS_NAMES := [
-	"Oni Kanji", "Shogun des Mots", "Démon Syllabique",
-	"Spectre Idéographique", "Seigneur Hanzi", "Fantôme Radicalaire"
+	"Oni Kanji", "Word Shogun", "Syllabic Demon",
+	"Ideographic Specter", "Hanzi Lord", "Radical Ghost"
 ]
-
 const BOSS_KANJI_COUNT := 3
 
 func generate() -> Dictionary:
@@ -12,7 +11,6 @@ func generate() -> Dictionary:
 	var kanji_pool : Array     = _get_kanji_pool(level_def)
 	var player_level : int     = GameManager.data.player_level
 	var difficulty : float     = _compute_difficulty(kanji_pool)
-
 	return {
 		"name":        BOSS_NAMES[randi() % BOSS_NAMES.size()],
 		"max_hp":      _compute_hp(player_level, difficulty),
@@ -23,14 +21,14 @@ func generate() -> Dictionary:
 	}
 
 func _get_kanji_pool(level_def: Dictionary) -> Array:
-	# Utilise les kanjis fixés par le niveau
+	# Use the kanjis defined by the level
 	var ids : Array = level_def.get("kanji_ids", [])
 	var pool : Array = []
 	for id in ids:
 		var k : Dictionary = KanjiDB.get_by_id(id)
 		if not k.is_empty():
 			pool.append(k)
-	# Sécurité : si le niveau n'a pas de kanjis définis, fallback sur les débloqués
+	# Safety: if the level has no kanjis defined, fall back to unlocked ones
 	if pool.is_empty():
 		pool = KanjiDB.get_unlocked(GameManager.data.player_level)
 		pool.shuffle()

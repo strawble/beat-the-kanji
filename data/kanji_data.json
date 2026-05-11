@@ -3,102 +3,102 @@
 	{
 	  "id": 1,
 	  "character": "日",
-	  "meanings": ["soleil", "jour"],
+	  "meanings": ["sun", "day"],
 	  "kun_yomi": ["ひ", "か"],
 	  "on_yomi": ["ニチ", "ジツ"],
 	  "unlock_at_player_level": 1,
 	  "stroke_count": 4,
-	  "first_stroke_hint": "Trait horizontal en haut"
+	  "first_stroke_hint": "Horizontal line at the top"
 	},
 	{
 	  "id": 2,
 	  "character": "月",
-	  "meanings": ["lune", "mois"],
+	  "meanings": ["moon", "month"],
 	  "kun_yomi": ["つき"],
 	  "on_yomi": ["ゲツ", "ガツ"],
 	  "unlock_at_player_level": 1,
 	  "stroke_count": 4,
-	  "first_stroke_hint": "Trait courbe à gauche"
+	  "first_stroke_hint": "Curved line to the left"
 	},
 	{
 	  "id": 3,
 	  "character": "火",
-	  "meanings": ["feu"],
+	  "meanings": ["fire"],
 	  "kun_yomi": ["ひ"],
 	  "on_yomi": ["カ"],
 	  "unlock_at_player_level": 1,
 	  "stroke_count": 4,
-	  "first_stroke_hint": "Trait vertical central"
+	  "first_stroke_hint": "Central vertical line"
 	},
 	{
 	  "id": 4,
 	  "character": "水",
-	  "meanings": ["eau"],
+	  "meanings": ["water"],
 	  "kun_yomi": ["みず"],
 	  "on_yomi": ["スイ"],
 	  "unlock_at_player_level": 2,
 	  "stroke_count": 4,
-	  "first_stroke_hint": "Trait vertical central avec crochet"
+	  "first_stroke_hint": "Central vertical line with hook"
 	},
 	{
 	  "id": 5,
 	  "character": "木",
-	  "meanings": ["arbre", "bois"],
+	  "meanings": ["tree", "wood"],
 	  "kun_yomi": ["き"],
 	  "on_yomi": ["モク", "ボク"],
 	  "unlock_at_player_level": 2,
 	  "stroke_count": 4,
-	  "first_stroke_hint": "Trait horizontal en haut"
+	  "first_stroke_hint": "Horizontal line at the top"
 	},
 	{
 	  "id": 6,
 	  "character": "金",
-	  "meanings": ["or", "argent", "métal"],
+	  "meanings": ["gold", "silver", "metal"],
 	  "kun_yomi": ["かね", "かな"],
 	  "on_yomi": ["キン", "コン"],
 	  "unlock_at_player_level": 2,
 	  "stroke_count": 8,
-	  "first_stroke_hint": "Trait oblique en haut à gauche"
+	  "first_stroke_hint": "Diagonal line in the upper left"
 	},
 	{
 	  "id": 7,
 	  "character": "土",
-	  "meanings": ["terre", "sol"],
+	  "meanings": ["earth", "ground"],
 	  "kun_yomi": ["つち"],
 	  "on_yomi": ["ド", "ト"],
 	  "unlock_at_player_level": 3,
 	  "stroke_count": 3,
-	  "first_stroke_hint": "Trait horizontal court en haut"
+	  "first_stroke_hint": "Short horizontal line at the top"
 	},
 	{
 	  "id": 8,
 	  "character": "山",
-	  "meanings": ["montagne"],
+	  "meanings": ["mountain"],
 	  "kun_yomi": ["やま"],
 	  "on_yomi": ["サン"],
 	  "unlock_at_player_level": 3,
 	  "stroke_count": 3,
-	  "first_stroke_hint": "Trait vertical central"
+	  "first_stroke_hint": "Central vertical line"
 	},
 	{
 	  "id": 9,
 	  "character": "川",
-	  "meanings": ["rivière", "fleuve"],
+	  "meanings": ["river", "stream"],
 	  "kun_yomi": ["かわ"],
 	  "on_yomi": ["セン"],
 	  "unlock_at_player_level": 3,
 	  "stroke_count": 3,
-	  "first_stroke_hint": "Trait courbe à gauche"
+	  "first_stroke_hint": "Curved line to the left"
 	},
 	{
 	  "id": 10,
 	  "character": "曜",
-	  "meanings": ["jour de la semaine"],
+	  "meanings": ["day of the week"],
 	  "kun_yomi": [],
 	  "on_yomi": ["ヨウ"],
 	  "unlock_at_player_level": 4,
 	  "stroke_count": 18,
-	  "first_stroke_hint": "Composant 日 à gauche en haut"
+	  "first_stroke_hint": "日 component on the upper left"
 	}
   ]
 }

@@ -2,13 +2,13 @@ extends Node2D
 
 const ITEM_ROW_SCENE := preload("res://scenes/shop/ItemRow.tscn")
 
-@onready var coins_label    : Label        = $UI/Root/VBox/CoinsLabel
-@onready var tab_weapon     : Button       = $UI/Root/VBox/TabBar/TabWeapon
-@onready var tab_armor      : Button       = $UI/Root/VBox/TabBar/TabArmor
-@onready var tab_consumable : Button       = $UI/Root/VBox/TabBar/TabConsumable
-@onready var item_grid      : VBoxContainer = $UI/Root/VBox/ItemList/ItemGrid
-@onready var back_button    : Button       = $UI/Root/VBox/TitleBar/BackButton
-@onready var equipped_details : Label      = $UI/Root/VBox/EquippedPanel/EquippedVBox/EquippedDetails
+@onready var coins_label      : Label        = $UI/Root/VBox/CoinsLabel
+@onready var tab_weapon       : Button       = $UI/Root/VBox/TabBar/TabWeapon
+@onready var tab_armor        : Button       = $UI/Root/VBox/TabBar/TabArmor
+@onready var tab_consumable   : Button       = $UI/Root/VBox/TabBar/TabConsumable
+@onready var item_grid        : VBoxContainer = $UI/Root/VBox/ItemList/ItemGrid
+@onready var back_button      : Button       = $UI/Root/VBox/TitleBar/BackButton
+@onready var equipped_details : Label        = $UI/Root/VBox/EquippedPanel/EquippedVBox/EquippedDetails
 
 var _current_tab : String = "weapon"
 
@@ -24,7 +24,7 @@ func _ready() -> void:
 func _switch_tab(type: String) -> void:
 	_current_tab = type
 	_populate(type)
-	# Feedback visuel sur l'onglet actif
+	# Visual feedback on the active tab
 	tab_weapon.modulate     = Color.WHITE if type == "weapon"     else Color(0.7, 0.7, 0.7)
 	tab_armor.modulate      = Color.WHITE if type == "armor"      else Color(0.7, 0.7, 0.7)
 	tab_consumable.modulate = Color.WHITE if type == "consumable" else Color(0.7, 0.7, 0.7)
@@ -32,7 +32,6 @@ func _switch_tab(type: String) -> void:
 func _populate(type: String) -> void:
 	for child in item_grid.get_children():
 		child.queue_free()
-
 	var items := ItemDB.get_by_type(type)
 	for item in items:
 		var row := ITEM_ROW_SCENE.instantiate()
@@ -43,20 +42,18 @@ func _populate(type: String) -> void:
 func _on_action(item: Dictionary) -> void:
 	var type = item["type"]
 	var owned := GameManager.has_item(item["id"])
-
 	if type == "consumable":
 		if GameManager.buy_item(item["id"]):
-			_feedback("Acheté : %s" % item["name"])
+			_feedback("Bought: %s" % item["name"])
 	elif owned:
 		GameManager.equip_item(item["id"])
-		_feedback("Équipé : %s" % item["name"])
+		_feedback("Equipped: %s" % item["name"])
 	else:
 		if GameManager.buy_item(item["id"]):
 			GameManager.equip_item(item["id"])
-			_feedback("Acheté et équipé : %s" % item["name"])
+			_feedback("Bought and equipped: %s" % item["name"])
 		else:
-			_feedback("Pas assez de pièces !")
-
+			_feedback("Not enough coins!")
 	_refresh_coins()
 	_refresh_equipped()
 	_populate(_current_tab)
@@ -67,8 +64,8 @@ func _refresh_coins() -> void:
 func _refresh_equipped() -> void:
 	var wpn_id := GameManager.data.equipped_weapon
 	var arm_id := GameManager.data.equipped_armor
-	var wpn_name := "aucune"
-	var arm_name := "aucune"
+	var wpn_name := "none"
+	var arm_name := "none"
 	if wpn_id != -1:
 		var w := ItemDB.get_by_id(wpn_id)
 		if not w.is_empty(): wpn_name = w["name"]
@@ -78,7 +75,7 @@ func _refresh_equipped() -> void:
 	equipped_details.text = "⚔ %s     🛡 %s" % [wpn_name, arm_name]
 
 func _feedback(msg: String) -> void:
-	# Réutilise le CoinsLabel brièvement pour le feedback
+	# Briefly reuse CoinsLabel for feedback
 	coins_label.text = msg
 	await get_tree().create_timer(1.2).timeout
 	_refresh_coins()
