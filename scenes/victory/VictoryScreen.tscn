@@ -34,19 +34,19 @@ theme_override_constants/separation = 16
 [node name="TitleLabel" type="Label" parent="UI/Overlay/CenterBox/Panel/VBox" unique_id=2069943827]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "Boss vaincu !"
+text = "Boss defeated !"
 horizontal_alignment = 1
 
 [node name="RewardsLabel" type="Label" parent="UI/Overlay/CenterBox/Panel/VBox" unique_id=100610123]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "+20 XP   +8 pièces"
+text = "+20 XP   +8 coins"
 horizontal_alignment = 1
 
 [node name="NewLabel" type="Label" parent="UI/Overlay/CenterBox/Panel/VBox" unique_id=1510068550]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "Kanjis découverts :"
+text = "Kanjis discovered :"
 horizontal_alignment = 1
 
 [node name="CardsRow" type="HBoxContainer" parent="UI/Overlay/CenterBox/Panel/VBox" unique_id=867222042]
@@ -58,4 +58,4 @@ alignment = 1
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Continuer →"
+text = "Continue →"

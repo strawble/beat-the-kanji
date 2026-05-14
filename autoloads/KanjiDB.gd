@@ -8,14 +8,14 @@ func _ready() -> void:
 func _load_data() -> void:
 	var file = FileAccess.open("res://data/kanji_data.json", FileAccess.READ)
 	if not file:
-		push_error("KanjiDB: impossible d'ouvrir kanji_data.json")
+		push_error("KanjiDB: cannot open kanji_data.json")
 		return
 	var json = JSON.new()
 	if json.parse(file.get_as_text()) != OK:
-		push_error("KanjiDB: JSON invalide")
+		push_error("KanjiDB: invalid JSON")
 		return
 	_kanjis = json.data["kanjis"]
-	print("KanjiDB: %d kanjis chargés." % _kanjis.size())
+	print("KanjiDB: %d kanjis loaded." % _kanjis.size())
 
 func get_unlocked(player_level: int) -> Array:
 	return _kanjis.filter(func(k): return k["unlock_at_player_level"] <= player_level)
@@ -29,33 +29,30 @@ func get_by_id(id: int) -> Dictionary:
 			return k
 	return {}
 
-# pool_override : si fourni, les distracteurs viennent UNIQUEMENT de ce pool
+# pool_override: if provided, distractors come ONLY from this pool
 func build_question(kanji: Dictionary, pool_override: Array = []) -> Dictionary:
 	var pool : Array = pool_override if not pool_override.is_empty() \
 					   else get_unlocked(GameManager.data.player_level)
-
-	# Choisit un type de question valide pour ce kanji
+	# Pick a valid question type for this kanji
 	var types : Array = ["meaning", "character", "kun_yomi", "on_yomi"]
 	if (kanji["kun_yomi"] as Array).is_empty(): types.erase("kun_yomi")
 	if (kanji["on_yomi"]  as Array).is_empty(): types.erase("on_yomi")
 	var type : String = types[randi() % types.size()]
-
 	var prompt  : String = ""
 	var correct : String = ""
 	match type:
 		"meaning":
-			prompt  = "Que signifie  " + kanji["character"] + "  ?"
+			prompt  = "What does  " + kanji["character"] + "  mean?"
 			correct = (kanji["meanings"] as Array)[0]
 		"character":
-			prompt  = "Quel kanji signifie  \"" + (kanji["meanings"] as Array)[0] + "\"  ?"
+			prompt  = "Which kanji means  \"" + (kanji["meanings"] as Array)[0] + "\"  ?"
 			correct = kanji["character"]
 		"kun_yomi":
-			prompt  = "Kun'yomi de  " + kanji["character"] + "  ?"
+			prompt  = "Kun'yomi of  " + kanji["character"] + "  ?"
 			correct = (kanji["kun_yomi"] as Array)[0]
 		"on_yomi":
-			prompt  = "On'yomi de  " + kanji["character"] + "  ?"
+			prompt  = "On'yomi of  " + kanji["character"] + "  ?"
 			correct = (kanji["on_yomi"] as Array)[0]
-
 	return {
 		"kanji_id": int(kanji["id"]),
 		"type":     type,
@@ -67,13 +64,12 @@ func build_question(kanji: Dictionary, pool_override: Array = []) -> Dictionary:
 func _build_choices(correct: String, type: String,
 					exclude_id: int, pool: Array) -> Array:
 	var choices : Array = [correct]
-
-	# Collecte TOUTES les valeurs possibles du pool (sauf le kanji actuel)
+	# Collect ALL possible values from the pool (excluding the current kanji)
 	var candidates : Array = []
 	for k in pool:
 		if int(k["id"]) == exclude_id:
 			continue
-		# Ajoute toutes les valeurs de ce type pour ce kanji
+		# Add all values of this type for this kanji
 		match type:
 			"meaning":
 				for m in (k["meanings"] as Array):
@@ -87,15 +83,13 @@ func _build_choices(correct: String, type: String,
 			"on_yomi":
 				for r in (k["on_yomi"] as Array):
 					if r != "" and r not in candidates: candidates.append(r)
-
 	candidates.shuffle()
 	for c in candidates:
 		if c not in choices:
 			choices.append(c)
 		if choices.size() >= 4:
 			break
-
-	# Si toujours pas assez (pool très petit), pioche dans les autres types du même kanji
+	# If still not enough (very small pool), draw from other types of the same kanji
 	if choices.size() < 4:
 		for k in pool:
 			if int(k["id"]) == exclude_id:
@@ -109,7 +103,6 @@ func _build_choices(correct: String, type: String,
 					break
 			if choices.size() >= 4:
 				break
-
 	choices.shuffle()
 	return choices
 

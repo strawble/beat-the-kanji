@@ -1,8 +1,7 @@
 extends Node
 
-# Base de données des sorts créés par combinaison de kanjis
-# Un sort = une liste ordonnée de kanji IDs + un effet
-
+# Database of spells created by combining kanjis
+# A spell = an ordered list of kanji IDs + an effect
 var _spells: Array = []
 
 func _ready() -> void:
@@ -11,24 +10,24 @@ func _ready() -> void:
 func _load_data() -> void:
 	var file = FileAccess.open("res://data/spell_data.json", FileAccess.READ)
 	if not file:
-		push_error("SpellDB: impossible d'ouvrir spell_data.json")
+		push_error("SpellDB: cannot open spell_data.json")
 		return
 	var json = JSON.new()
 	var err = json.parse(file.get_as_text())
 	if err != OK:
-		push_error("SpellDB: JSON invalide — " + json.get_error_message())
+		push_error("SpellDB: invalid JSON — " + json.get_error_message())
 		return
 	_spells = json.data["spells"]
-	print("SpellDB: %d sorts chargés." % _spells.size())
+	print("SpellDB: %d spells loaded." % _spells.size())
 
-# Retourne le sort correspondant à une combinaison de kanji IDs (ordre important)
+# Returns the spell matching a combination of kanji IDs (order matters)
 func find_spell(kanji_ids: Array) -> Dictionary:
 	for spell in _spells:
 		if spell["kanji_ids"] == kanji_ids:
 			return spell
 	return {}
 
-# Retourne tous les sorts réalisables avec les kanjis découverts par le joueur
+# Returns all spells castable with the kanjis discovered by the player
 func get_available_spells() -> Array:
 	var discovered := GameManager.data.discovered_kanji_ids
 	var available: Array = []
@@ -42,6 +41,6 @@ func get_available_spells() -> Array:
 			available.append(spell)
 	return available
 
-# Retourne tous les sorts (pour l'UI de sélection)
+# Returns all spells (for the selection UI)
 func get_all() -> Array:
 	return _spells

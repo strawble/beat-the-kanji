@@ -31,13 +31,13 @@ theme_override_constants/separation = 12
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
-text = "Boutique"
+text = "Shop"
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="UI/Root/VBox/TitleBar" unique_id=2054633217]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-text = "← Retour"
+text = "← Back"
 
 [node name="CoinsLabel" type="Label" parent="UI/Root/VBox" unique_id=624461356]
 layout_mode = 2
@@ -53,20 +53,20 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "⚔ Armes
+text = "⚔ Weapons
 "
 
 [node name="TabArmor" type="Button" parent="UI/Root/VBox/TabBar" unique_id=163658663]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "🛡 Armures"
+text = "🛡 Armors"
 
 [node name="TabConsumable" type="Button" parent="UI/Root/VBox/TabBar" unique_id=597851011]
 custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "🧪 Consommables"
+text = "🧪 consumables"
 
 [node name="ItemList" type="ScrollContainer" parent="UI/Root/VBox" unique_id=738932634]
 custom_minimum_size = Vector2(0, 200)
@@ -88,10 +88,10 @@ layout_mode = 2
 [node name="EquippedTitle" type="Label" parent="UI/Root/VBox/EquippedPanel/EquippedVBox" unique_id=2090602990]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "Équipé actuellement"
+text = "Currently equipped"
 
 [node name="EquippedDetails" type="Label" parent="UI/Root/VBox/EquippedPanel/EquippedVBox" unique_id=32281517]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "Arme : aucune   |   Armure : aucune"
+text = "Weapon : aucune   |   Armor : aucune"
 autowrap_mode = 2

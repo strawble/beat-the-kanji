@@ -13,18 +13,16 @@ signal continue_pressed
 func _ready() -> void:
 	continue_btn.pressed.connect(_on_continue)
 
-# Appelée depuis GameWorld avec les données du boss vaincu
+# Called from GameWorld with the defeated boss data
 func setup(boss: Dictionary, newly_discovered: Array) -> void:
 	rewards_label.text = "+%d XP     +%d 🪙" % [boss["xp_reward"], boss["coin_reward"]]
-
-	# Vide les cartes précédentes
+	# Clear previous cards
 	for c in cards_row.get_children():
 		c.queue_free()
-
 	if newly_discovered.is_empty():
-		new_label.text = "Aucun nouveau kanji — combat !"
+		new_label.text = "No new kanji — keep fighting!"
 	else:
-		new_label.text = "%d nouveau(x) kanji(s) :" % newly_discovered.size()
+		new_label.text = "%d new kanji(s):" % newly_discovered.size()
 		for kanji in newly_discovered:
 			var card := CARD_SCENE.instantiate() as PanelContainer
 			cards_row.add_child(card)
