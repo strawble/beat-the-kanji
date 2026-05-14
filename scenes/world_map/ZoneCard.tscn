@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/world_map/ZoneCard.gd" id="1_zcard"]
+
+[node name="ZoneCard" type="PanelContainer"]
+custom_minimum_size = Vector2(280, 220)
+script = ExtResource("1_zcard")
+
+[node name="BG" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 2
+color = Color(0.3, 0.3, 0.3, 0.4)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Zone"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+
+[node name="StatusLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "—"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+
+[node name="DescLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Description"
+horizontal_alignment = 1
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+
+[node name="InfoLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="ActionBtn" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Action"

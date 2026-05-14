@@ -1,0 +1,52 @@
+{
+  "zones": [
+    {
+      "id": 1,
+      "name": "Yamato Plains",
+      "theme": "plains",
+      "description": "The verdant lands of ancient Japan. Fundamental kanji of nature and daily life.",
+      "unlock_at_player_level": 1,
+      "cost_coins": 0,
+      "kanji_level_range": [1, 15],
+      "background_texture": "res://assets/backgrounds/zone1_plains.png",
+      "boss_sprite_theme": "nature",
+      "color_hex": "#4a7c4e"
+    },
+    {
+      "id": 2,
+      "name": "Kazan Desert",
+      "theme": "desert",
+      "description": "The arid lands scorched by the sun. Kanji of emotions, work and society.",
+      "unlock_at_player_level": 26,
+      "cost_coins": 500,
+      "kanji_level_range": [26, 50],
+      "background_texture": "res://assets/backgrounds/zone2_desert.png",
+      "boss_sprite_theme": "fire",
+      "color_hex": "#c4782a"
+    },
+    {
+      "id": 3,
+      "name": "Arashi Mountains",
+      "theme": "mountains",
+      "description": "Snow-capped peaks where storms rage. Kanji of abstract concepts and time.",
+      "unlock_at_player_level": 51,
+      "cost_coins": 1200,
+      "kanji_level_range": [51, 75],
+      "background_texture": "res://assets/backgrounds/zone3_mountains.png",
+      "boss_sprite_theme": "ice",
+      "color_hex": "#4a7fa8"
+    },
+    {
+      "id": 4,
+      "name": "Homura Volcano",
+      "theme": "volcano",
+      "description": "The molten heart of the earth. Advanced kanji of culture and thought.",
+      "unlock_at_player_level": 76,
+      "cost_coins": 2500,
+      "kanji_level_range": [76, 100],
+      "background_texture": "res://assets/backgrounds/zone4_volcano.png",
+      "boss_sprite_theme": "lava",
+      "color_hex": "#c43a2a"
+    }
+  ]
+}

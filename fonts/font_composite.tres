@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3 uid="uid://bwp283gsrgnaf"]
+
+[ext_resource type="FontFile" uid="uid://l7il66qmkqm5" path="res://fonts/Aiharahudemojikaisho_free305.ttf" id="1_jp"]
+[ext_resource type="FontFile" uid="uid://bq2ryhvklyevx" path="res://fonts/animeace2_reg.ttf" id="2_en"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("1_jp")])
+base_font = ExtResource("2_en")

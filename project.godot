@@ -11,18 +11,19 @@ config_version=5
 [application]
 
 config/name="BeatTheKanji"
-run/main_scene="uid://cx810sjbgj1l4"
+run/main_scene="res://scenes/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*uid://dghlka6psu2wp"
-KanjiDB="*uid://b5hysg0yvnrpp"
-BossGenerator="*uid://ceynrvej6tda0"
-ItemDB="*uid://btch2mytcn7bi"
-AudioManager="*uid://cmnsjqg6hh5de"
-SpellDB="*res://autoloads/SpellDB.gd"
+GameManager="*uid://dhynqd2jabovc"
+KanjiDB="*uid://d4vyedb83ybb"
+ItemDB="*uid://gtrxcro6n5ex"
+ZoneManager="*uid://qv60vdl03pg8"
+BossGenerator="*uid://cl2031qpa4h5l"
+AudioManager="*uid://dv0o4c4beehvt"
+NavBar="*uid://dalsgqyqkrj3m"
 
 [display]
 
@@ -31,6 +32,10 @@ window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[gui]
+
+theme/custom="res://themes/main_theme.tres"
 
 [physics]
 

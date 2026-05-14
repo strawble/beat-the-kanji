@@ -1,76 +1,49 @@
 {
   "kanjis": [
-	{
-	  "id": 1,
-	  "character": "日",
-	  "meanings": ["soleil", "jour"],
-	  "kun_yomi": ["ひ", "か"],
-	  "on_yomi": ["ニチ", "ジツ"],
-	  "unlock_at_player_level": 1
-	},
-	{
-	  "id": 2,
-	  "character": "月",
-	  "meanings": ["lune", "mois"],
-	  "kun_yomi": ["つき"],
-	  "on_yomi": ["ゲツ", "ガツ"],
-	  "unlock_at_player_level": 1
-	},
-	{
-	  "id": 3,
-	  "character": "火",
-	  "meanings": ["feu"],
-	  "kun_yomi": ["ひ"],
-	  "on_yomi": ["カ"],
-	  "unlock_at_player_level": 1
-	},
-	{
-	  "id": 4,
-	  "character": "水",
-	  "meanings": ["eau"],
-	  "kun_yomi": ["みず"],
-	  "on_yomi": ["スイ"],
-	  "unlock_at_player_level": 2
-	},
-	{
-	  "id": 5,
-	  "character": "木",
-	  "meanings": ["arbre", "bois"],
-	  "kun_yomi": ["き"],
-	  "on_yomi": ["モク", "ボク"],
-	  "unlock_at_player_level": 2
-	},
-	{
-	  "id": 6,
-	  "character": "金",
-	  "meanings": ["or", "argent", "métal"],
-	  "kun_yomi": ["かね", "かな"],
-	  "on_yomi": ["キン", "コン"],
-	  "unlock_at_player_level": 2
-	},
-	{
-	  "id": 7,
-	  "character": "土",
-	  "meanings": ["terre", "sol"],
-	  "kun_yomi": ["つち"],
-	  "on_yomi": ["ド", "ト"],
-	  "unlock_at_player_level": 3
-	},
-	{
-	  "id": 8,
-	  "character": "山",
-	  "meanings": ["montagne"],
-	  "kun_yomi": ["やま"],
-	  "on_yomi": ["サン"],
-	  "unlock_at_player_level": 3
-	},
-	{
-	  "id": 9,
-	  "character": "川",
-	  "meanings": ["rivière", "fleuve"],
-	  "kun_yomi": ["かわ"],
-	  "on_yomi": ["セン"],
-	  "unlock_at_player_level": 3
-	}
+	{ "id": 1,  "character": "日", "meanings": ["sun", "day"],              "kun_yomi": ["ひ", "か"],     "on_yomi": ["ニチ", "ジツ"], "stroke_count": 4, "first_stroke_hint": "Vertical stroke on the left",  "unlock_at_player_level": 1,  "zone_id": 1 },
+	{ "id": 2,  "character": "月", "meanings": ["moon", "month"],           "kun_yomi": ["つき"],         "on_yomi": ["ゲツ", "ガツ"], "stroke_count": 4, "first_stroke_hint": "Curved stroke on the left",   "unlock_at_player_level": 1,  "zone_id": 1 },
+	{ "id": 3,  "character": "火", "meanings": ["fire"],                    "kun_yomi": ["ひ"],           "on_yomi": ["カ"],           "stroke_count": 4, "first_stroke_hint": "Short diagonal at the top",   "unlock_at_player_level": 1,  "zone_id": 1 },
+	{ "id": 4,  "character": "水", "meanings": ["water"],                   "kun_yomi": ["みず"],         "on_yomi": ["スイ"],         "stroke_count": 4, "first_stroke_hint": "Central vertical with hook",  "unlock_at_player_level": 2,  "zone_id": 1 },
+	{ "id": 5,  "character": "木", "meanings": ["tree", "wood"],            "kun_yomi": ["き"],           "on_yomi": ["モク", "ボク"], "stroke_count": 4, "first_stroke_hint": "Horizontal stroke at the top","unlock_at_player_level": 2,  "zone_id": 1 },
+	{ "id": 6,  "character": "金", "meanings": ["gold", "money", "metal"],  "kun_yomi": ["かね", "かな"], "on_yomi": ["キン", "コン"], "stroke_count": 8, "first_stroke_hint": "Diagonal stroke top-left",    "unlock_at_player_level": 2,  "zone_id": 1 },
+	{ "id": 7,  "character": "土", "meanings": ["earth", "ground"],         "kun_yomi": ["つち"],         "on_yomi": ["ド", "ト"],     "stroke_count": 3, "first_stroke_hint": "Short horizontal at the top", "unlock_at_player_level": 3,  "zone_id": 1 },
+	{ "id": 8,  "character": "山", "meanings": ["mountain"],                "kun_yomi": ["やま"],         "on_yomi": ["サン"],         "stroke_count": 3, "first_stroke_hint": "Central vertical peak",       "unlock_at_player_level": 3,  "zone_id": 1 },
+	{ "id": 9,  "character": "川", "meanings": ["river", "stream"],         "kun_yomi": ["かわ"],         "on_yomi": ["セン"],         "stroke_count": 3, "first_stroke_hint": "Curved stroke on the left",   "unlock_at_player_level": 3,  "zone_id": 1 },
+	{ "id": 10, "character": "人", "meanings": ["person", "human being"],   "kun_yomi": ["ひと"],         "on_yomi": ["ジン", "ニン"], "stroke_count": 2, "first_stroke_hint": "Long diagonal from the top",  "unlock_at_player_level": 4,  "zone_id": 1 },
+	{ "id": 11, "character": "口", "meanings": ["mouth", "entrance"],       "kun_yomi": ["くち"],         "on_yomi": ["コウ", "ク"],   "stroke_count": 3, "unlock_at_player_level": 4,  "zone_id": 1 },
+	{ "id": 12, "character": "手", "meanings": ["hand"],                    "kun_yomi": ["て"],           "on_yomi": ["シュ"],         "stroke_count": 4, "unlock_at_player_level": 4,  "zone_id": 1 },
+	{ "id": 13, "character": "足", "meanings": ["foot", "leg"],             "kun_yomi": ["あし", "た"],   "on_yomi": ["ソク"],         "stroke_count": 7, "unlock_at_player_level": 5,  "zone_id": 1 },
+	{ "id": 14, "character": "目", "meanings": ["eye", "gaze"],             "kun_yomi": ["め"],           "on_yomi": ["モク", "ボク"], "stroke_count": 5, "unlock_at_player_level": 5,  "zone_id": 1 },
+	{ "id": 15, "character": "耳", "meanings": ["ear"],                     "kun_yomi": ["みみ"],         "on_yomi": ["ジ"],           "stroke_count": 6, "unlock_at_player_level": 5,  "zone_id": 1 },
+	{ "id": 16, "character": "一", "meanings": ["one", "1"],                "kun_yomi": ["ひと"],         "on_yomi": ["イチ", "イツ"], "stroke_count": 1, "unlock_at_player_level": 6,  "zone_id": 1 },
+	{ "id": 17, "character": "二", "meanings": ["two", "2"],                "kun_yomi": ["ふた"],         "on_yomi": ["ニ"],           "stroke_count": 2, "unlock_at_player_level": 6,  "zone_id": 1 },
+	{ "id": 18, "character": "三", "meanings": ["three", "3"],              "kun_yomi": ["み"],           "on_yomi": ["サン"],         "stroke_count": 3, "unlock_at_player_level": 6,  "zone_id": 1 },
+	{ "id": 19, "character": "四", "meanings": ["four", "4"],               "kun_yomi": ["よ", "よん"],   "on_yomi": ["シ"],           "stroke_count": 5, "unlock_at_player_level": 7,  "zone_id": 1 },
+	{ "id": 20, "character": "五", "meanings": ["five", "5"],               "kun_yomi": ["いつ"],         "on_yomi": ["ゴ"],           "stroke_count": 4, "unlock_at_player_level": 7,  "zone_id": 1 },
+	{ "id": 21, "character": "六", "meanings": ["six", "6"],                "kun_yomi": ["む", "むっ"],   "on_yomi": ["ロク"],         "stroke_count": 4, "unlock_at_player_level": 7,  "zone_id": 1 },
+	{ "id": 22, "character": "七", "meanings": ["seven", "7"],              "kun_yomi": ["なな", "なの"], "on_yomi": ["シチ"],         "stroke_count": 2, "unlock_at_player_level": 8,  "zone_id": 1 },
+	{ "id": 23, "character": "八", "meanings": ["eight", "8"],              "kun_yomi": ["や", "やっ"],   "on_yomi": ["ハチ"],         "stroke_count": 2, "unlock_at_player_level": 8,  "zone_id": 1 },
+	{ "id": 24, "character": "九", "meanings": ["nine", "9"],               "kun_yomi": ["ここの"],       "on_yomi": ["キュウ", "ク"], "stroke_count": 2, "unlock_at_player_level": 8,  "zone_id": 1 },
+	{ "id": 25, "character": "十", "meanings": ["ten", "10"],               "kun_yomi": ["とお"],         "on_yomi": ["ジュウ", "ジッ"], "stroke_count": 2, "unlock_at_player_level": 9,  "zone_id": 1 },
+	{ "id": 26, "character": "百", "meanings": ["hundred", "100"],          "kun_yomi": [],               "on_yomi": ["ヒャク"],       "stroke_count": 6, "unlock_at_player_level": 9,  "zone_id": 1 },
+	{ "id": 27, "character": "千", "meanings": ["thousand", "1000"],        "kun_yomi": ["ち"],           "on_yomi": ["セン"],         "stroke_count": 3, "unlock_at_player_level": 9,  "zone_id": 1 },
+	{ "id": 28, "character": "万", "meanings": ["ten thousand", "10000"],   "kun_yomi": [],               "on_yomi": ["マン", "バン"], "stroke_count": 3, "unlock_at_player_level": 10, "zone_id": 1 },
+	{ "id": 29, "character": "大", "meanings": ["big", "large"],            "kun_yomi": ["おお"],         "on_yomi": ["ダイ", "タイ"], "stroke_count": 3, "unlock_at_player_level": 10, "zone_id": 1 },
+	{ "id": 30, "character": "小", "meanings": ["small", "little"],         "kun_yomi": ["ちい", "こ"],   "on_yomi": ["ショウ"],       "stroke_count": 3, "unlock_at_player_level": 10, "zone_id": 1 },
+	{ "id": 31, "character": "中", "meanings": ["middle", "inside"],        "kun_yomi": ["なか"],         "on_yomi": ["チュウ"],       "stroke_count": 4, "unlock_at_player_level": 11, "zone_id": 1 },
+	{ "id": 32, "character": "上", "meanings": ["up", "above"],             "kun_yomi": ["うえ", "かみ"], "on_yomi": ["ジョウ", "ショウ"], "stroke_count": 3, "unlock_at_player_level": 11, "zone_id": 1 },
+	{ "id": 33, "character": "下", "meanings": ["down", "below"],           "kun_yomi": ["した", "しも"], "on_yomi": ["カ", "ゲ"],     "stroke_count": 3, "unlock_at_player_level": 11, "zone_id": 1 },
+	{ "id": 34, "character": "左", "meanings": ["left"],                    "kun_yomi": ["ひだり"],       "on_yomi": ["サ"],           "stroke_count": 5, "unlock_at_player_level": 12, "zone_id": 1 },
+	{ "id": 35, "character": "右", "meanings": ["right"],                   "kun_yomi": ["みぎ"],         "on_yomi": ["ウ", "ユウ"],   "stroke_count": 5, "unlock_at_player_level": 12, "zone_id": 1 },
+	{ "id": 36, "character": "前", "meanings": ["front", "before"],         "kun_yomi": ["まえ"],         "on_yomi": ["ゼン"],         "stroke_count": 9, "unlock_at_player_level": 12, "zone_id": 1 },
+	{ "id": 37, "character": "後", "meanings": ["after", "behind"],         "kun_yomi": ["うしろ", "のち"], "on_yomi": ["ゴ", "コウ"], "stroke_count": 9, "unlock_at_player_level": 13, "zone_id": 1 },
+	{ "id": 38, "character": "男", "meanings": ["man", "male"],             "kun_yomi": ["おとこ"],       "on_yomi": ["ダン", "ナン"], "stroke_count": 7, "unlock_at_player_level": 13, "zone_id": 1 },
+	{ "id": 39, "character": "女", "meanings": ["woman", "female"],         "kun_yomi": ["おんな", "め"], "on_yomi": ["ジョ", "ニョ"], "stroke_count": 3, "unlock_at_player_level": 13, "zone_id": 1 },
+	{ "id": 40, "character": "子", "meanings": ["child", "son"],            "kun_yomi": ["こ"],           "on_yomi": ["シ", "ス"],     "stroke_count": 3, "unlock_at_player_level": 14, "zone_id": 1 },
+	{ "id": 41, "character": "父", "meanings": ["father"],                  "kun_yomi": ["ちち"],         "on_yomi": ["フ"],           "stroke_count": 4, "unlock_at_player_level": 14, "zone_id": 1 },
+	{ "id": 42, "character": "母", "meanings": ["mother"],                  "kun_yomi": ["はは"],         "on_yomi": ["ボ"],           "stroke_count": 5, "unlock_at_player_level": 14, "zone_id": 1 },
+	{ "id": 43, "character": "本", "meanings": ["book", "origin"],          "kun_yomi": ["もと"],         "on_yomi": ["ホン"],         "stroke_count": 5, "unlock_at_player_level": 15, "zone_id": 1 },
+	{ "id": 44, "character": "文", "meanings": ["text", "writing"],         "kun_yomi": ["ふみ"],         "on_yomi": ["ブン", "モン"], "stroke_count": 4, "unlock_at_player_level": 15, "zone_id": 1 },
+	{ "id": 45, "character": "字", "meanings": ["character", "letter"],     "kun_yomi": ["あざ"],         "on_yomi": ["ジ"],           "stroke_count": 6, "unlock_at_player_level": 15, "zone_id": 1 }
   ]
 }

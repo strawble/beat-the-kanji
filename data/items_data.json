@@ -1,68 +1,36 @@
 {
   "items": [
-	{
-	  "id": 1,
-	  "name": "Pinceau de bois",
-	  "description": "+5 dégâts par bonne réponse",
-	  "type": "weapon",
-	  "cost": 20,
-	  "effect": { "stat": "bonus_damage", "value": 5 }
-	},
-	{
-	  "id": 2,
-	  "name": "Pinceau de fer",
-	  "description": "+12 dégâts par bonne réponse",
-	  "type": "weapon",
-	  "cost": 60,
-	  "effect": { "stat": "bonus_damage", "value": 12 }
-	},
-	{
-	  "id": 3,
-	  "name": "Pinceau d'or",
-	  "description": "+22 dégâts par bonne réponse",
-	  "type": "weapon",
-	  "cost": 150,
-	  "effect": { "stat": "bonus_damage", "value": 22 }
-	},
-	{
-	  "id": 4,
-	  "name": "Kimono de coton",
-	  "description": "+20 PV maximum",
-	  "type": "armor",
-	  "cost": 25,
-	  "effect": { "stat": "bonus_hp", "value": 20 }
-	},
-	{
-	  "id": 5,
-	  "name": "Armure de samouraï",
-	  "description": "+50 PV maximum",
-	  "type": "armor",
-	  "cost": 80,
-	  "effect": { "stat": "bonus_hp", "value": 50 }
-	},
-	{
-	  "id": 6,
-	  "name": "Amulette de jade",
-	  "description": "Réduit les dégâts reçus de 3",
-	  "type": "armor",
-	  "cost": 110,
-	  "effect": { "stat": "damage_reduction", "value": 3 }
-	},
-	{
-	  "id": 7,
-	  "name": "Potion de clarté",
-	  "description": "Soigne 30 PV (usage unique)",
-	  "type": "consumable",
-	  "cost": 15,
-	  "effect": { "stat": "heal", "value": 30 }
-	},
-	{
-	  "id": 8,
-	  "name": "Thé du maître",
-	  "description": "Soigne tous les PV (usage unique)",
-	  "type": "consumable",
-	  "cost": 40,
-	  "effect": { "stat": "heal_full", "value": 0 }
-	}
+	{ "id": 1,  "name": "Wooden Brush",         "description": "+5 damage per correct answer",                  "type": "weapon",     "tier": "common", "cost": 20,  "set_tag": "",        "effects": [{ "stat": "bonus_damage", "value": 5 }] },
+	{ "id": 2,  "name": "Iron Brush",           "description": "+12 damage per correct answer",                 "type": "weapon",     "tier": "common", "cost": 60,  "set_tag": "",        "effects": [{ "stat": "bonus_damage", "value": 12 }] },
+	{ "id": 3,  "name": "Golden Brush",         "description": "+22 damage per correct answer",                 "type": "weapon",     "tier": "rare",   "cost": 150, "set_tag": "scholar", "effects": [{ "stat": "bonus_damage", "value": 22 }] },
+	{ "id": 4,  "name": "Sharp Katana",         "description": "+18 damage, +8% crit rate",                     "type": "weapon",     "tier": "rare",   "cost": 130, "set_tag": "samurai", "effects": [{ "stat": "bonus_damage", "value": 18 }, { "stat": "crit_rate", "value": 8 }] },
+	{ "id": 5,  "name": "Scholar's Blade",      "description": "+10 damage, +50% crit damage",                  "type": "weapon",     "tier": "epic",   "cost": 280, "set_tag": "scholar", "effects": [{ "stat": "bonus_damage", "value": 10 }, { "stat": "crit_dmg", "value": 50 }] },
+	{ "id": 6,  "name": "Cotton Kimono",        "description": "+20 maximum HP",                                "type": "armor",      "tier": "common", "cost": 25,  "set_tag": "",        "effects": [{ "stat": "bonus_hp", "value": 20 }] },
+	{ "id": 7,  "name": "Samurai Armor",        "description": "+50 max HP, +2 damage reduction",               "type": "armor",      "tier": "rare",   "cost": 120, "set_tag": "samurai", "effects": [{ "stat": "bonus_hp", "value": 50 }, { "stat": "damage_reduction", "value": 2 }] },
+	{ "id": 8,  "name": "Jade Amulet",          "description": "Reduces damage taken by 3",                     "type": "armor",      "tier": "common", "cost": 80,  "set_tag": "",        "effects": [{ "stat": "damage_reduction", "value": 3 }] },
+	{ "id": 9,  "name": "Ancestor's Cuirass",   "description": "+40 HP, +5 damage reduction, +5% dodge",        "type": "armor",      "tier": "epic",   "cost": 320, "set_tag": "samurai", "effects": [{ "stat": "bonus_hp", "value": 40 }, { "stat": "damage_reduction", "value": 5 }, { "stat": "dodge_chance", "value": 5 }] },
+	{ "id": 10, "name": "Monk's Robe",          "description": "+30 HP, regenerates 5 HP per correct answer",   "type": "armor",      "tier": "rare",   "cost": 160, "set_tag": "scholar", "effects": [{ "stat": "bonus_hp", "value": 30 }, { "stat": "hp_regen", "value": 5 }] },
+	{ "id": 11, "name": "Critic's Amulet",      "description": "+15% critical hit rate",                        "type": "accessory",  "tier": "rare",   "cost": 110, "set_tag": "",        "effects": [{ "stat": "crit_rate", "value": 15 }] },
+	{ "id": 12, "name": "Wisdom Ring",          "description": "Regenerates 8 HP per correct answer",           "type": "accessory",  "tier": "rare",   "cost": 95,  "set_tag": "scholar", "effects": [{ "stat": "hp_regen", "value": 8 }] },
+	{ "id": 13, "name": "Swiftness Charm",      "description": "+12% dodge chance",                             "type": "accessory",  "tier": "rare",   "cost": 120, "set_tag": "samurai", "effects": [{ "stat": "dodge_chance", "value": 12 }] },
+	{ "id": 14, "name": "Blood Stone",          "description": "+25% crit damage, +10% crit rate",              "type": "accessory",  "tier": "epic",   "cost": 250, "set_tag": "",        "effects": [{ "stat": "crit_dmg", "value": 25 }, { "stat": "crit_rate", "value": 10 }] },
+	{ "id": 15, "name": "Dragon Medallion",     "description": "+15 damage, +10% crit, +20% crit damage",       "type": "accessory",  "tier": "epic",   "cost": 400, "set_tag": "",        "effects": [{ "stat": "bonus_damage", "value": 15 }, { "stat": "crit_rate", "value": 10 }, { "stat": "crit_dmg", "value": 20 }] },
+	{ "id": 16, "name": "Potion of Clarity",    "description": "Heals 30 HP (single use)",                      "type": "consumable", "tier": "common", "cost": 15,  "set_tag": "",        "effects": [{ "stat": "heal", "value": 30 }] },
+	{ "id": 17, "name": "Master's Tea",         "description": "Heals all HP (single use)",                     "type": "consumable", "tier": "rare",   "cost": 40,  "set_tag": "",        "effects": [{ "stat": "heal_full", "value": 0 }] },
+	{ "id": 18, "name": "Mastery Scroll",       "description": "+0.3 mastery on the current kanji",             "type": "consumable", "tier": "rare",   "cost": 35,  "set_tag": "",        "effects": [{ "stat": "mastery_boost", "value": 30 }] },
+	{ "id": 19, "name": "Focus Incense",        "description": "+4s on the next 5 question timers",             "type": "consumable", "tier": "common", "cost": 20,  "set_tag": "",        "effects": [{ "stat": "timer_boost", "value": 4 }] },
+	{ "id": 20, "name": "Warrior's Elixir",     "description": "+10 damage for the current fight",              "type": "consumable", "tier": "rare",   "cost": 50,  "set_tag": "",        "effects": [{ "stat": "temp_damage", "value": 10 }] },
+	{ "id": 21, "name": "Revival Fetish",       "description": "Prevents the next defeat (single use)",         "type": "consumable", "tier": "epic",   "cost": 120, "set_tag": "",        "effects": [{ "stat": "revive", "value": 1 }] },
+	{ "id": 22, "name": "Broken Blade",         "description": "+8 damage — a worn but useful sword",           "type": "weapon",     "tier": "common", "cost": 10,  "set_tag": "",        "effects": [{ "stat": "bonus_damage", "value": 8 }] },
+	{ "id": 23, "name": "Celestial Bow",        "description": "+14 damage, +6% dodge",                         "type": "weapon",     "tier": "rare",   "cost": 140, "set_tag": "",        "effects": [{ "stat": "bonus_damage", "value": 14 }, { "stat": "dodge_chance", "value": 6 }] },
+	{ "id": 24, "name": "Paper Shield",         "description": "+3 damage reduction, +8% dodge",                "type": "armor",      "tier": "common", "cost": 55,  "set_tag": "",        "effects": [{ "stat": "damage_reduction", "value": 3 }, { "stat": "dodge_chance", "value": 8 }] },
+	{ "id": 25, "name": "Pilgrim's Sandals",    "description": "+20% dodge, +5 HP",                             "type": "accessory",  "tier": "common", "cost": 45,  "set_tag": "",        "effects": [{ "stat": "dodge_chance", "value": 20 }, { "stat": "bonus_hp", "value": 5 }] },
+	{ "id": 26, "name": "Zen Master's Seal",    "description": "+20% crit damage, regenerates 3 HP/answer",     "type": "accessory",  "tier": "epic",   "cost": 300, "set_tag": "scholar", "effects": [{ "stat": "crit_dmg", "value": 20 }, { "stat": "hp_regen", "value": 3 }] },
+	{ "id": 27, "name": "Shogun's Helmet",      "description": "+35 HP, +5% crit rate",                         "type": "armor",      "tier": "epic",   "cost": 260, "set_tag": "samurai", "effects": [{ "stat": "bonus_hp", "value": 35 }, { "stat": "crit_rate", "value": 5 }] },
+	{ "id": 28, "name": "Ancient Scroll",       "description": "+10 damage, +5% crit, +10% crit damage",        "type": "weapon",     "tier": "epic",   "cost": 350, "set_tag": "scholar", "effects": [{ "stat": "bonus_damage", "value": 10 }, { "stat": "crit_rate", "value": 5 }, { "stat": "crit_dmg", "value": 10 }] }
+  ],
+  "sets": [
+	{ "tag": "samurai", "name": "Samurai Set",   "pieces_required": 3, "bonus_description": "+20 damage, +10% dodge",       "bonus_effects": [{ "stat": "bonus_damage", "value": 20 }, { "stat": "dodge_chance", "value": 10 }] },
+	{ "tag": "scholar", "name": "Scholar's Way", "pieces_required": 3, "bonus_description": "+15% crit rate, +5 HP regen", "bonus_effects": [{ "stat": "crit_rate", "value": 15 }, { "stat": "hp_regen", "value": 5 }] }
   ]
 }

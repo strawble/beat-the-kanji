@@ -32,7 +32,7 @@ horizontal_alignment = 1
 [node name="SubLabel" type="Label" parent="UI/Root/VBox" unique_id=1926628767]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Learn Kanjis by fighting"
+text = "Apprends les kanjis en combattant"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="UI/Root/VBox" unique_id=23690892]
@@ -43,7 +43,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "▶  Play"
+text = "▶  Jouer"
 
 [node name="DexButton" type="Button" parent="UI/Root/VBox" unique_id=653292729]
 custom_minimum_size = Vector2(0, 50)
@@ -54,5 +54,5 @@ text = "📖  KanjiDex"
 [node name="StatsLabel" type="Label" parent="UI/Root/VBox" unique_id=816315133]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "Level 1  —  0 kanji discovered"
+text = "Niveau 1  —  0 kanjis découverts"
 horizontal_alignment = 1

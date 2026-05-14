@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://5urqnrmclbja"]
+
+[ext_resource type="Script" uid="uid://bb275jyerqrmq" path="res://scenes/help/Help.gd" id="1_help"]
+
+[node name="Help" type="Node2D" unique_id=530480459]
+script = ExtResource("1_help")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1539272411]
+
+[node name="Root" type="MarginContainer" parent="UI" unique_id=1117712152]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="UI/Root" unique_id=313557610]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="UI/Root/VBox" unique_id=1777697060]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 26
+text = "❓  How to Play"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="UI/Root/VBox" unique_id=1678693782]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="UI/Root/VBox/Scroll" unique_id=952909308]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="Intro" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1031225490]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Beat the Kanji is an RPG where you learn Japanese kanji by fighting monsters. Each correct answer damages the boss; each wrong answer hurts you back. Master your kanji to survive!"
+autowrap_mode = 2
+
+[node name="Sep1" type="HSeparator" parent="UI/Root/VBox/Scroll/Content" unique_id=1749106453]
+layout_mode = 2
+
+[node name="CombatTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=366124925]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "⚔  Combat"
+
+[node name="Combat" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1124832890]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Each question asks about one kanji's meaning, character, kun'yomi or on'yomi reading. Pick the right answer from the four choices before the timer runs out. A correct answer damages the boss; a wrong answer or timeout damages you."
+autowrap_mode = 2
+
+[node name="HintsTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1507807447]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "💡  Hints"
+
+[node name="Hints" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=627504854]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Tap the Hint button up to 3 times per question for progressively stronger help (stroke count → first letter → full answer + eliminate 2 wrong choices). Using hints reduces the mastery you gain on a correct answer."
+autowrap_mode = 2
+
+[node name="ParryTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1453062596]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "🛡  Parry"
+
+[node name="Parry" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1566368198]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Every ~20 seconds the boss prepares a big attack. A drawing pad appears — trace the kanji to parry. You get 3 attempts with progressively less visual help. Successful parry = counter-attack; failure = double damage from the boss."
+autowrap_mode = 2
+
+[node name="MasteryTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=191898246]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "★  Mastery"
+
+[node name="Mastery" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=541072133]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Every kanji has a mastery score from 0 to 1. Correct answers raise it, wrong answers lower it. The KanjiDex shows mastery as 1-3 stars per kanji. Mastered kanjis appear less often in fights — you'll naturally spend more time on the ones you struggle with."
+autowrap_mode = 2
+
+[node name="ProgressionTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1190384099]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "📈  Progression"
+
+[node name="Progression" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1768628734]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Defeating bosses gives you XP and coins. Level up to unlock more kanjis. Use coins in the Shop to buy weapons, armor, accessories, consumables, or permanent stat upgrades. Unlock new Zones on the World Map for more advanced kanji pools."
+autowrap_mode = 2
+
+[node name="EquipTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=283269142]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "🛒  Equipment & Sets"
+
+[node name="Equip" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=1012752354]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Equip up to 3 items at once: a weapon, an armor, and an accessory. Items come in 3 tiers (common, rare, epic) and some belong to sets. Wear 3 pieces of the same set (Samurai or Scholar) to unlock a powerful bonus."
+autowrap_mode = 2
+
+[node name="ShortcutsTitle" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=155996937]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "⌨  Dev Shortcuts (in Battle)"
+
+[node name="Shortcuts" type="Label" parent="UI/Root/VBox/Scroll/Content" unique_id=475773363]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 12
+text = "T = +50 XP    C = +200 coins    H = use a potion    P = force a parry    R = reset save"
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="UI/Root/VBox" unique_id=1458961678]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "← Back to Menu"

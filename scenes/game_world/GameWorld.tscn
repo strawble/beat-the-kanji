@@ -1,191 +1,210 @@
-[gd_scene format=3 uid="uid://d0xdw0w5mbhpp"]
+[gd_scene format=3 uid="uid://5xls24jcxt65"]
 
-[ext_resource type="Script" uid="uid://bos2apw5dgmtd" path="res://scenes/game_world/GameWorld.gd" id="1_p46a1"]
+[ext_resource type="Script" uid="uid://bnfll5im0vx5c" path="res://scenes/game_world/GameWorld.gd" id="1_gw"]
 
-[node name="GameWorld" type="Node2D" unique_id=980617413]
-script = ExtResource("1_p46a1")
+[node name="GameWorld" type="Node2D" unique_id=1779697019]
+script = ExtResource("1_gw")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=108888754]
+[node name="UI" type="CanvasLayer" parent="." unique_id=165286610]
 
-[node name="Root" type="MarginContainer" parent="UI" unique_id=709318638]
+[node name="Root" type="MarginContainer" parent="UI" unique_id=302190214]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 80
 
-[node name="VBox" type="VBoxContainer" parent="UI/Root" unique_id=723089004]
+[node name="VBox" type="VBoxContainer" parent="UI/Root" unique_id=600334691]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatsBar" type="PanelContainer" parent="UI/Root/VBox" unique_id=931523356]
+layout_mode = 2
+
+[node name="StatsHBox" type="HBoxContainer" parent="UI/Root/VBox/StatsBar" unique_id=1335193949]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="StatsBar" type="PanelContainer" parent="UI/Root/VBox" unique_id=1842064813]
-custom_minimum_size = Vector2(0, 40)
+[node name="LevelLabel" type="Label" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=942108610]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Lv. 1"
 
-[node name="StatsHBox" type="HBoxContainer" parent="UI/Root/VBox/StatsBar" unique_id=141476803]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="LevelLabel" type="Label" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1606020133]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Niv. 1"
-vertical_alignment = 1
-
-[node name="XPBar" type="ProgressBar" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1755931054]
-custom_minimum_size = Vector2(0, 22)
+[node name="XPBar" type="ProgressBar" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1988826403]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 show_percentage = false
 
-[node name="CoinsLabel" type="Label" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=123506481]
+[node name="CoinsLabel" type="Label" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=286879896]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 14
 text = "0 🪙"
+horizontal_alignment = 2
+
+[node name="BossSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=1544553728]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+
+[node name="BossVBox" type="VBoxContainer" parent="UI/Root/VBox/BossSection" unique_id=1974042774]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BossName" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=664160888]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.4, 1)
+theme_override_font_sizes/font_size = 27
+text = "Boss"
 horizontal_alignment = 1
 
-[node name="DexButton" type="Button" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=49777251]
-custom_minimum_size = Vector2(80, 30)
+[node name="BossSprite" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=433754889]
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
-text = "Dex 📖"
-
-[node name="ShopButton" type="Button" parent="UI/Root/VBox/StatsBar/StatsHBox" unique_id=1975146823]
-custom_minimum_size = Vector2(90, 30)
-layout_mode = 2
-text = "Shop 🛒"
-
-[node name="BossSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=1881662731]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BossVBox" type="VBoxContainer" parent="UI/Root/VBox/BossSection" unique_id=1018896178]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="BossName" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=337938180]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Boss Name"
-horizontal_alignment = 1
-
-[node name="BossHPBar" type="ProgressBar" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=6362527]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-value = 100.0
-
-[node name="BossSprite" type="Label" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=2143329949]
-custom_minimum_size = Vector2(0, 110)
-layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "日"
-horizontal_alignment = 1
-
-[node name="PlayerSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=709833799]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="PlayerHBox" type="HBoxContainer" parent="UI/Root/VBox/PlayerSection" unique_id=826977563]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="PlayerHPLabel" type="Label" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=554658168]
-layout_mode = 2
-text = "HP : "
+theme_override_font_sizes/font_size = 350
+text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerHPBar" type="ProgressBar" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=766117454]
-custom_minimum_size = Vector2(0, 24)
+[node name="BossHPBar" type="ProgressBar" parent="UI/Root/VBox/BossSection/BossVBox" unique_id=503964939]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 value = 100.0
+show_percentage = false
 
-[node name="QuestionSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=526025159]
+[node name="CombatTimerHolder" type="MarginContainer" parent="UI/Root/VBox" unique_id=609203261]
+layout_mode = 2
+
+[node name="QuestionSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=912371861]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="QuestionVBox" type="VBoxContainer" parent="UI/Root/VBox/QuestionSection" unique_id=721603891]
+[node name="QuestionVBox" type="VBoxContainer" parent="UI/Root/VBox/QuestionSection" unique_id=1648160069]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
-[node name="QuestionLabel" type="Label" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=992857844]
-custom_minimum_size = Vector2(0, 60)
+[node name="QuestionLabel" type="Label" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=367488077]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 27
 text = "Question..."
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="AnswerGrid" type="GridContainer" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=1810997316]
+[node name="AnswerGrid" type="GridContainer" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=681077156]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
 columns = 2
 
-[node name="Btn0" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1323127028]
+[node name="Answer0" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1828016270]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "—"
 
-[node name="Btn1" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=408130499]
+[node name="Answer1" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1441979315]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "—"
 
-[node name="Btn2" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1264662124]
+[node name="Answer2" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1096946507]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "—"
 
-[node name="Btn3" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=504097225]
+[node name="Answer3" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox/AnswerGrid" unique_id=1463576103]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Answer X"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "—"
 
-[node name="InfoLabel" type="Label" parent="UI/Root/VBox" unique_id=1477430672]
-custom_minimum_size = Vector2(0, 30)
+[node name="HintButton" type="Button" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=1307358116]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 19
+text = "💡 Hint"
+
+[node name="HintLabel" type="Label" parent="UI/Root/VBox/QuestionSection/QuestionVBox" unique_id=311264565]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 13
 horizontal_alignment = 1
 
-[node name="LevelUpOverlay" type="PanelContainer" parent="UI" unique_id=1154948215]
+[node name="PlayerSection" type="PanelContainer" parent="UI/Root/VBox" unique_id=1817265610]
+layout_mode = 2
+
+[node name="PlayerHBox" type="HBoxContainer" parent="UI/Root/VBox/PlayerSection" unique_id=372759214]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayerHPLabel" type="Label" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=1198304137]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "HP: 100 / 100"
+
+[node name="PlayerHPBar" type="ProgressBar" parent="UI/Root/VBox/PlayerSection/PlayerHBox" unique_id=1787270477]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+show_percentage = false
+
+[node name="InfoLabel" type="Label" parent="UI/Root/VBox" unique_id=840783387]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="LevelUpOverlay" type="PanelContainer" parent="UI" unique_id=1983398306]
 visible = false
-custom_minimum_size = Vector2(320, 140)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -70.0
-offset_right = 160.0
-offset_bottom = 70.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelUpVBox" type="VBoxContainer" parent="UI/LevelUpOverlay" unique_id=745042436]
+[node name="LevelUpVBox" type="VBoxContainer" parent="UI/LevelUpOverlay" unique_id=275599573]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="LevelUpTitle" type="Label" parent="UI/LevelUpOverlay/LevelUpVBox" unique_id=1982451332]
+[node name="LevelUpTitle" type="Label" parent="UI/LevelUpOverlay/LevelUpVBox" unique_id=1313912560]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 28
 text = "LEVEL UP !"
 horizontal_alignment = 1
 
-[node name="LevelUpSub" type="Label" parent="UI/LevelUpOverlay/LevelUpVBox" unique_id=1445625899]
+[node name="LevelUpSub" type="Label" parent="UI/LevelUpOverlay/LevelUpVBox" unique_id=590332443]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Niveau 2"
+theme_override_font_sizes/font_size = 16
+text = "Level X"
 horizontal_alignment = 1

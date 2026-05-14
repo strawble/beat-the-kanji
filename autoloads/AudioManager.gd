@@ -1,5 +1,5 @@
 extends Node
-# Stub — sera complété en Phase 3
+# Stub — sera complété en phase Polish
 
 func play_sfx(_name: String) -> void:
 	pass
