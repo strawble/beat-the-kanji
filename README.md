@@ -367,13 +367,18 @@ The game currently has no feedback beyond text label color changes. Each of the 
 - **Combo system** — track consecutive correct answers; a streak of 3+ multiplies damage by 1.5x, streak of 5+ by 2x. Resets on any wrong answer or timeout.
 - **Status effects** — ice (slows timer), burn (DoT on player), stun (boss loses one hit point automatically). Triggerable by specific consumable items.
 - **Animated boss defeat** — currently the boss just disappears. A brief animation or text sequence before the victory screen makes victories feel earned.
+- **Background** - Add backgrounds for each zone and the different menus. Maybe draw a map for a better representation of the different zones in the world map menu.
+- **Assets** - Add assets for the different bosses (the kanjis are currently placeholders), add assets for the different items/upgrades.
+- **UI** - Add a proper UI and an inventory for the different items. 
+- **Drops** - Possibily add item drops to bossfights on top of the ones available in the shop. 
+- **Sounds** - Add sounds and music. 
 
 ### 6. Platform & distribution
 
 The codebase is already structured for it. No changes needed to run on:
+- **Android / iOS** — Current development target. NavBar is sized for thumbs. Main thing to audit is font rendering at small sizes.
+- **Desktop** — Works fine on desktop, despite the vertical format not being adapted.
 - **Web (HTML5)** — Godot exports directly. Main thing to test is touch input in `KanjiDrawing.gd` (already implemented via `InputEventScreenDrag`).
-- **Android / iOS** — portrait layout works, NavBar is sized for thumbs. Main thing to audit is font rendering at small sizes.
-- **Desktop** — already the development target.
 
 ---
 
@@ -381,17 +386,18 @@ The codebase is already structured for it. No changes needed to run on:
 
 | Role | Name |
 |---|---|
-| Game Design & Development | [PLACEHOLDER_NAME] |
-| Game Design & Development | [PLACEHOLDER_NAME] |
-| Art & Visual Assets | [PLACEHOLDER_NAME] |
-| Japanese Content & Accuracy | [PLACEHOLDER_NAME] |
-| Sound Design | [PLACEHOLDER_NAME] |
+| Game Design & Development | Stella Rosier |
+| Game Design & Development | Jules Cambon |
+| Game Design & Development | Théo Baugey |
+| Art & Visual Assets | ----------- |
+| Japanese Content & Accuracy | ------------ |
+| Sound Design | ----------- |
 
 ---
 
 ## License & Credits
 
-**License:** [PLACEHOLDER — e.g. MIT]
+**License:** MIT License
 
 **Fonts:**
 - *Anime Ace 2* by Blambot Fonts — [confirm license before distribution]
